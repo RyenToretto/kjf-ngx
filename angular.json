@@ -163,6 +163,46 @@
           }
         }
       }
+    },
+    "test-kjf-box": {
+      "projectType": "library",
+      "root": "projects/test-kjf-box",
+      "sourceRoot": "projects/test-kjf-box/src",
+      "prefix": "test-kjf",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/test-kjf-box/tsconfig.lib.json",
+            "project": "projects/test-kjf-box/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/test-kjf-box/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/test-kjf-box/src/test.ts",
+            "tsConfig": "projects/test-kjf-box/tsconfig.spec.json",
+            "karmaConfig": "projects/test-kjf-box/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/test-kjf-box/tsconfig.lib.json",
+              "projects/test-kjf-box/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "kjf-ngx",

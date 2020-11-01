@@ -19,6 +19,10 @@
       "kjf-box": [
         "dist/kjf-box/kjf-box",
         "dist/kjf-box"
+      ],
+      "test-kjf-box": [
+        "dist/test-kjf-box/test-kjf-box",
+        "dist/test-kjf-box"
       ]
     }
   }
