@@ -21,7 +21,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "src/tsconfig.app.json",
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -33,6 +33,9 @@
             "scripts": []
           },
           "configurations": {
+            "es5": {
+              "tsConfig": "src/tsconfig.app.es5.json"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -69,6 +72,9 @@
             "browserTarget": "kjf-ngx:build"
           },
           "configurations": {
+            "es5": {
+              "browserTarget": "kjf-ngx:build:es5"
+            },
             "production": {
               "browserTarget": "kjf-ngx:build:production"
             }
@@ -101,7 +107,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
+              "src/tsconfig.app.json",
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
@@ -124,78 +130,38 @@
         }
       }
     },
-    "kjf-box": {
+    "kjf-ngx-lib": {
       "projectType": "library",
-      "root": "projects/kjf-box",
-      "sourceRoot": "projects/kjf-box",
+      "root": "kjf-ngx-lib",
+      "sourceRoot": "kjf-ngx-lib",
       "prefix": "kjf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/kjf-box/tsconfig.lib.json",
-            "project": "projects/kjf-box/ng-package.json"
+            "tsConfig": "kjf-ngx-lib/tsconfig.lib.json",
+            "project": "kjf-ngx-lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/kjf-box/tsconfig.lib.prod.json"
+              "tsConfig": "kjf-ngx-lib/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/kjf-box/src/test.ts",
-            "tsConfig": "projects/kjf-box/tsconfig.spec.json",
-            "karmaConfig": "projects/kjf-box/karma.conf.js"
+            "main": "kjf-ngx-lib/src/test.ts",
+            "tsConfig": "kjf-ngx-lib/tsconfig.spec.json",
+            "karmaConfig": "kjf-ngx-lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/kjf-box/tsconfig.lib.json",
-              "projects/kjf-box/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "test-kjf-box": {
-      "projectType": "library",
-      "root": "projects/test-kjf-box",
-      "sourceRoot": "projects/test-kjf-box/src",
-      "prefix": "test-kjf",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "projects/test-kjf-box/tsconfig.lib.json",
-            "project": "projects/test-kjf-box/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/test-kjf-box/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/test-kjf-box/src/test.ts",
-            "tsConfig": "projects/test-kjf-box/tsconfig.spec.json",
-            "karmaConfig": "projects/test-kjf-box/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/test-kjf-box/tsconfig.lib.json",
-              "projects/test-kjf-box/tsconfig.spec.json"
+              "kjf-ngx-lib/tsconfig.lib.json",
+              "kjf-ngx-lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

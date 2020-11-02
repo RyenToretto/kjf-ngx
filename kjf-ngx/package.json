@@ -1,0 +1,9 @@
+{
+  "name": "kjf-ngx",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.1.6",
+    "@angular/core": "^10.1.6",
+    "tslib": "^2.0.0"
+  }
+}
