@@ -16,7 +16,7 @@ class TestAlertComponent {
   clickCount = 0;
   showIcon = true;
   cssClass = '';
-  handleClose($event) {
+  handleClose($event): void {
     this.clickCount++;
   }
 }
@@ -59,30 +59,30 @@ describe('alert', () => {
       });
 
       it('Alert should have content', () => {
-        expect(alertElement.querySelector('.devui-alert').textContent).toBe('成功。devcloud一站式云端DevOps平台。');
+        expect(alertElement.querySelector('.kjfui-alert').textContent).toBe('成功。devcloud一站式云端DevOps平台。');
       });
     });
     describe('alert type', () => {
       it('Alert should has success type', () => {
-        expect(alertElement.querySelector('.devui-icon-success')).not.toBe(null);
+        expect(alertElement.querySelector('.kjfui-icon-success')).not.toBe(null);
       });
 
       it('Alert should has danger type', () => {
         testComponent.type = 'danger';
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-icon-error')).not.toBe(null);
+        expect(alertElement.querySelector('.kjfui-icon-error')).not.toBe(null);
       });
 
       it('Alert should has warning type', () => {
         testComponent.type = 'warning';
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-icon-warning')).not.toBe(null);
+        expect(alertElement.querySelector('.kjfui-icon-warning')).not.toBe(null);
       });
 
       it('Alert should has info type', () => {
         testComponent.type = 'info';
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-icon-info')).not.toBe(null);
+        expect(alertElement.querySelector('.kjfui-icon-info')).not.toBe(null);
       });
     });
 
@@ -90,19 +90,19 @@ describe('alert', () => {
       it('Alert should append cssClass', () => {
         testComponent.cssClass = 'cssClass';
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-alert').classList).toContain('cssClass');
+        expect(alertElement.querySelector('.kjfui-alert').classList).toContain('cssClass');
       });
     });
 
     describe('alert icon', () => {
       it('Alert should show icon ', () => {
-        expect(alertElement.querySelector('.devui-alert-icon')).not.toBe(null);
+        expect(alertElement.querySelector('.kjfui-alert-icon')).not.toBe(null);
       });
 
       it('Alert should not show icon ', () => {
         testComponent.showIcon = false;
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-alert-icon')).toBe(null);
+        expect(alertElement.querySelector('.kjfui-alert-icon')).toBe(null);
       });
     });
 
@@ -111,7 +111,7 @@ describe('alert', () => {
         const closeButton = alertElement.querySelector('button');
         closeButton.click();
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-alert')).toBe(null);
+        expect(alertElement.querySelector('.kjfui-alert')).toBe(null);
       });
 
       it('Alert should activate closeEvent', () => {
@@ -151,7 +151,7 @@ describe('alert', () => {
 
       it('Alert should have content', () => {
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-alert').textContent).toBe(' success ');
+        expect(alertElement.querySelector('.kjfui-alert').textContent).toBe(' success ');
       });
     });
     describe('alert dismiss', () => {
@@ -159,7 +159,7 @@ describe('alert', () => {
         fixture.detectChanges();
         tick(2500);
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-alert')).not.toBe(null);
+        expect(alertElement.querySelector('.kjfui-alert')).not.toBe(null);
         tick(500);
         fixture.detectChanges();
       }));
@@ -168,7 +168,7 @@ describe('alert', () => {
         fixture.detectChanges();
         tick(3000);
         fixture.detectChanges();
-        expect(alertElement.querySelector('.devui-alert')).toBe(null);
+        expect(alertElement.querySelector('.kjfui-alert')).toBe(null);
       }));
     });
   });

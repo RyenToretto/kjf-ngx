@@ -1,0 +1,11 @@
+@mixin font-content() {
+  font-size: $font-size-base;
+  font-weight: $font-content-weight;
+  line-height: $line-height-base;
+}
+
+@mixin font-title($font-size: $font-size-primary) {
+  font-size: $font-size;
+  font-weight: $font-title-weight;
+  line-height: $line-height-base;
+}

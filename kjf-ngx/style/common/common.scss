@@ -1,0 +1,35 @@
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+a:hover,
+a:focus {
+  color: $base-link-color;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+.custom-link {
+  color: $custom-link-color;
+
+  &:hover {
+    color: $custom-link-hover-color;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.custom-link-light {
+  color: $custom-link-light-color;
+
+  &:hover {
+    color: $custom-link-light-hover-color;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

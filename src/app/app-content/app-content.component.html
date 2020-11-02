@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div id="menuLink" class="menu-link">
+    <span></span>
+  </div>
+  <div class="kjfui-components-search">
+    请输入您的关键字
+  </div>
+  <div class="sidebar">
+    <ul class="kjfui-menu" style="margin-bottom: 0;">
+      <li class="kjfui-menu-item" routerLinkActive="kjfui-menu-item-selected">
+        <a routerLink="get-start">快速开始</a>
+      </li>
+      <li class="kjfui-menu-item" routerLinkActive="kjfui-menu-item-selected">
+        <a routerLink="color" style="position: relative;"
+          >颜色变量
+          <sup class="kjfui-beta-label">Beta</sup>
+        </a>
+      </li>
+    </ul>
+    <nav class="side-nav">
+      accordion
+    </nav>
+  </div>
+  <div class="doc-viewer-container">
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

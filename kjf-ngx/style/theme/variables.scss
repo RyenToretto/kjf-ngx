@@ -1,0 +1,37 @@
+$white: #ffffff !default;
+
+$text-color: #252b3a !default;
+
+$gray-base: #adb0b8 !default;
+$gray-divider-color: #dfe1e6 !default;
+$gray-f8: #f8f8f8 !default;
+$pink-dark: #c7254e !default;
+
+$font-size-base: 12px !default;
+$font-size-primary: 16px !default;
+$font-size-secondary-card-title: 14px !default;
+$font-size-modal-title: 18px !default;
+
+$font-title-weight: bold !default;
+$font-content-weight: normal !default;
+
+$line-height-base: 1.5 !default;
+
+$body-background: $white !default;
+$font-size-page-title: $font-size-primary !default;
+$font-variant-base: tabular-nums !default;
+$font-family: 'Helvetica Neue', helvetica, arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei',
+sans-serif;
+
+$hr-color: $gray-base !default;
+
+$base-link-color: #526ecc !default;
+$custom-link-color: $base-link-color !default;
+$custom-link-hover-color: #344899 !default;
+
+$custom-link-light-color: #96adfa !default;
+$custom-link-light-hover-color: #beccfa !default;
+
+$base-placeholder-color: #8a8e99 !default;
+
+$scrollbar-base-bg: $gray-base !default;

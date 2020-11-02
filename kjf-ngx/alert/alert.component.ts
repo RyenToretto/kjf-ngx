@@ -3,7 +3,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { AlertType } from './alert.types';
 
@@ -28,7 +27,7 @@ export class AlertComponent {
 
   hide = false;
 
-  close() {
+  close(): void {
     this.closeEvent.emit(this);
     this.hide = true;
   }

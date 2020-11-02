@@ -1,21 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'd-alert-close',
+  selector: 'kjf-alert-close',
   templateUrl: './close.component.html',
-  styleUrls: ['./close.component.css']
+  styleUrls: ['./close.component.scss']
 })
 export class CloseComponent implements OnInit {
 
-  constructor() {
+  constructor() {}
 
-  }
-
-  ngOnInit() {
-  }
-
-  handleClose($event) {
-    console.log($event);
-  }
+  ngOnInit(): void {}
 
 }

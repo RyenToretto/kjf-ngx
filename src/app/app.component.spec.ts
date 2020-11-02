@@ -22,8 +22,6 @@ describe('AppComponent', () => {
 
   it(`should have as title 'kjf-ngx'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('kjf-ngx');
   });
 
   it('should render title', () => {

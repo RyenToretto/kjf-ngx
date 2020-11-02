@@ -132,36 +132,36 @@
     },
     "kjf-ngx-lib": {
       "projectType": "library",
-      "root": "kjf-ngx-lib",
-      "sourceRoot": "kjf-ngx-lib",
+      "root": "kjf-ngx",
+      "sourceRoot": "kjf-ngx",
       "prefix": "kjf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "kjf-ngx-lib/tsconfig.lib.json",
-            "project": "kjf-ngx-lib/ng-package.json"
+            "tsConfig": "kjf-ngx/tsconfig.lib.json",
+            "project": "kjf-ngx/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "kjf-ngx-lib/tsconfig.lib.prod.json"
+              "tsConfig": "kjf-ngx/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "kjf-ngx-lib/src/test.ts",
-            "tsConfig": "kjf-ngx-lib/tsconfig.spec.json",
-            "karmaConfig": "kjf-ngx-lib/karma.conf.js"
+            "main": "kjf-ngx/src/test.ts",
+            "tsConfig": "kjf-ngx/tsconfig.spec.json",
+            "karmaConfig": "kjf-ngx/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "kjf-ngx-lib/tsconfig.lib.json",
-              "kjf-ngx-lib/tsconfig.spec.json"
+              "kjf-ngx/tsconfig.lib.json",
+              "kjf-ngx/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

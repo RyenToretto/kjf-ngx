@@ -21,6 +21,6 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts",
-    "../devui/**/*.spec.ts"
+    "../kjf-ngx/**/*.spec.ts"
   ]
 }

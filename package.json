@@ -4,10 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open --configuration es5",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "test:lib": "ng test kjf-ngx-lib --no-watch --no-progress --browsers=ChromeHeadlessCI",
+    "build:devui": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build kjf-ngx-lib --configuration production",
+    "build:devui:ivy": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build kjf-ngx-lib"
   },
   "private": true,
   "dependencies": {
