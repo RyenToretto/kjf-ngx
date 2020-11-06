@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 import { AppContentComponent } from './app-content.component';
 import { routesConfig } from './component.route';
 import { KjfNgxModule } from 'kjf-ngx';
-import {ExamplePanelComponent} from '../example-panel/example-panel.component';
+import { ExamplePanelComponent } from '../example-panel/example-panel.component';
 
 @NgModule({
     declarations: [
-        ExamplePanelComponent,
         AppContentComponent,
+        ExamplePanelComponent,
     ],
     imports: [
         CommonModule,

@@ -1,4 +1,4 @@
-import {ExamplePanelComponent} from '../example-panel/example-panel.component';
+import { ExamplePanelComponent } from '../example-panel/example-panel.component';
 
 export const routesConfig = [
     {
@@ -8,7 +8,20 @@ export const routesConfig = [
         data: {}
     },
     {
-        path: 'alert', component: ExamplePanelComponent,
+        path: 'ioc',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/ioc-demo/ioc-demo.module').then(m => m.IocDemoModule),
+        data: {
+            type: '学习',
+            name: 'IocDemo',
+            cnName: '控制反转测试',
+            description: '学习 angular 的控制反转。',
+            tmw: '解耦，代码复用，增强扩展性。'
+        }
+    },
+    {
+        path: 'alert',
+        component: ExamplePanelComponent,
         loadChildren: () => import('../../../kjf-ngx/alert/demo/alert-demo.module').then(m => m.AlertDemoModule),
         data: {
             type: '反馈',
