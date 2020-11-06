@@ -3,7 +3,7 @@ import { ExamplePanelComponent } from '../example-panel/example-panel.component'
 export const routesConfig = [
     {
         path: '',
-        redirectTo: 'alert',
+        redirectTo: 'ioc',
         pathMatch: 'full',
         data: {}
     },
