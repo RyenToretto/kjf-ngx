@@ -15,5 +15,6 @@ const flowChartData = {
     "element_name": "action_1", // wy 树结点 标题
     "is_root": 0,
     "directives": {}
-  }
+  },
+  "next_steps": []
 }

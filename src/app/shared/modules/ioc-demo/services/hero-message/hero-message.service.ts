@@ -5,14 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class HeroMessageService {
 
-    heroMessages: string[] = [ '666' ]; // heroMessages 缓存
+    heroMessages: string[] = [
+        'root service'
+    ];
 
     constructor() { }
 
     // 往缓存中添加一条消息
     addHeroMessage(heroMessage: string) {
         this.heroMessages.push(heroMessage);
-        setTimeout(() => this.clearHeroMessages(), 1500);
+        setTimeout(() => this.clearHeroMessages(), 15000);
     }
 
     // 清空缓存

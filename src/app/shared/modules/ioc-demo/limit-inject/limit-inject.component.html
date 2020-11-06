@@ -1,0 +1,12 @@
+<section class="limit-inject">
+  <br />
+  <hr />
+  limit-inject component html
+  <br />
+  <button class="btn" (click)="addMsg($event)">增加一条消息</button>
+  <br />
+  <div *ngFor="let msg of messageService.heroMessages">
+    {{ msg }}
+  </div>
+
+</section>

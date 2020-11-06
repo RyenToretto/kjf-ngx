@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IocDemoComponent } from './ioc-demo.component';
+
 import { ClassInjectComponent } from './class-inject/class-inject.component';
+import { LimitInjectComponent } from './limit-inject/limit-inject.component';
 
 @NgModule({
     imports: [
@@ -19,6 +21,7 @@ import { ClassInjectComponent } from './class-inject/class-inject.component';
     declarations: [
         IocDemoComponent,
         ClassInjectComponent,
+        LimitInjectComponent,
     ],
     entryComponents: [
         IocDemoComponent,
