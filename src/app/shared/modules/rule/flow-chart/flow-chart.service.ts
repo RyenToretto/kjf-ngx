@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { RuleItemType } from '../entities';
 
-@Injectable({
-    providedIn: 'root'
-})
-export class RuleFlowChartService {
-    // flowChartStepData 缓存
-    flowChartStep: RuleItemType = {
+import { FlowChartStep } from './flow-chart.types';
+
+@Injectable()
+export class FlowChartService {
+    flowChartStep: FlowChartStep = {
         _id: '1',
         element_name: '中国',
         element_type: 'trigger',

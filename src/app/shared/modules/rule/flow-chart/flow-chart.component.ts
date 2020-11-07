@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RuleItemType } from '../../entities';
+
+import { FlowChartStep } from './flow-chart.types';
 
 @Component({
-    selector: 'flow-rule-flow-chart',
-    templateUrl: './rule-flow-chart.component.html'
+    selector: 'flow-chart',
+    templateUrl: './flow-chart.component.html'
 })
 export class RuleFlowChartComponent implements OnInit {
-    @Input() flowChartStep: RuleItemType;
+    @Input() flowChartStep: FlowChartStep;
 
     constructor() {}
 

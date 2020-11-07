@@ -1,26 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { RuleItemType } from '../../../entities';
-import { RuleFlowChartService } from '../../../services/rule-flow-chart.service';
+import { FlowChartService } from '../flow-chart.service';
+import { FlowChartStep } from '../flow-chart.types';
 
 @Component({
-    selector: 'flow-rule-flow-chart-step',
-    templateUrl: './rule-flow-chart-step.component.html'
+    selector: 'flow-chart-step',
+    templateUrl: './flow-chart-step.component.html'
 })
 export class RuleFlowChartStepComponent implements OnInit {
 
     @Input() isLeafNode: Boolean;
 
-    @Input() flowChartStep: RuleItemType;
+    @Input() flowChartStep: FlowChartStep;
 
     addFrameItemPopper = false;
 
-    constructor(private ruleFlowChartService: RuleFlowChartService) {}
+    constructor(private flowChartService: FlowChartService) {}
 
     ngOnInit(): void {}
 
     toggleFrameItemDetail(): void {
-        this.ruleFlowChartService.toggleFrameItemOpen(this.flowChartStep);
+        this.flowChartService.toggleFrameItemOpen(this.flowChartStep);
     }
 
     toggleAddFrameItemPopper(): void {
@@ -29,13 +29,13 @@ export class RuleFlowChartStepComponent implements OnInit {
 
     // 新并行元素
     addFrameItemIntoArray(parentFrameLine): void {
-        this.ruleFlowChartService.addFrameLineIntoArray(parentFrameLine);
+        this.flowChartService.addFrameLineIntoArray(parentFrameLine);
         this.addFrameItemPopper = false;
     }
 
     // 新 action
     addFrameItem(parentFrameLine): void {
-        this.ruleFlowChartService.addFrameLineItem(parentFrameLine);
+        this.flowChartService.addFrameLineItem(parentFrameLine);
         this.addFrameItemPopper = false;
     }
 }

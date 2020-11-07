@@ -1,6 +1,6 @@
-@import './rule-flow-chart-detail/rule-flow-chart-detail.component.scss';
+@import './flow-chart-detail/flow-chart-detail.component.scss';
 
-.rule-flow-chart-step {
+.flow-chart-step {
     box-sizing: border-box;
     width: 100%;
     .top-y-line-box {
@@ -67,23 +67,23 @@
             }
         }
     }
-    .rule-flow-chart-step-box {
+    .flow-chart-step-box {
         box-sizing: border-box;
         width: 100%;
-        .rule-flow-chart-step-wrapper {
+        .flow-chart-step-wrapper {
             box-sizing: border-box;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            .rule-flow-chart-step-content {
+            .flow-chart-step-content {
                 width: 20%;
                 min-width: 600px;
                 min-height: 66px;
                 box-sizing: border-box;
                 background: $white;
                 border-radius: 4px;
-                .rule-flow-chart-step-head {
+                .flow-chart-step-head {
                     position: relative;
                     box-sizing: border-box;
                     width: 100%;
@@ -91,7 +91,7 @@
                     line-height: 66px;
                     cursor: pointer;
                     padding: 18px 20px;
-                    .rule-flow-chart-step-title {
+                    .flow-chart-step-title {
                         box-sizing: border-box;
                         width: 100%;
                         height: 100%;
@@ -99,7 +99,7 @@
                         align-items: center;
                         justify-content: flex-start;
                     }
-                    .rule-flow-chart-step-menu {
+                    .flow-chart-step-menu {
                         box-sizing: border-box;
                         width: 24px;
                         height: 100%;
@@ -134,7 +134,7 @@
                 height: 100%;
                 background-color: $gray-400;
                 position: relative;
-                .add-rule-flow-chart-step-box {
+                .add-flow-chart-step-box {
                     box-sizing: border-box;
                     width: 30px;
                     height: 40px;
@@ -144,14 +144,14 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    .add-rule-flow-chart-step-btn {
+                    .add-flow-chart-step-btn {
                         position: absolute;
                         top: 28px;
                         left: -15px;
                         z-index: 2;
                         background: $gray-100;
                     }
-                    .add-rule-flow-chart-step-popper {
+                    .add-flow-chart-step-popper {
                         display: none;
                         box-sizing: border-box;
                         width: 160px;
@@ -163,7 +163,7 @@
                         left: 100%;
                         z-index: 9;
                         .add-frame-into-array,
-                        .add-rule-flow-chart-step {
+                        .add-flow-chart-step {
                             box-sizing: border-box;
                             width: 100%;
                             height: 50%;
@@ -182,9 +182,5 @@
                 }
             }
         }
-    }
-    .flow-rule-flow-chart {
-        display: flex;
-        justify-content: center;
     }
 }

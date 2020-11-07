@@ -1,4 +1,4 @@
-export interface RuleItemType {
+export interface FlowChartStep {
     is_root?: number;
     _id?: string | undefined;
     element_name?: string;
@@ -6,6 +6,6 @@ export interface RuleItemType {
     connector_name?: string;
     is_deleted?: boolean;
     directives?: object;
-    next_step?: RuleItemType;
-    next_steps?: RuleItemType[];
+    next_step?: FlowChartStep;
+    next_steps?: FlowChartStep[];
 }

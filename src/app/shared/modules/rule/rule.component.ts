@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
-import { RuleFlowChartService } from '../services/rule-flow-chart.service';
+import { FlowChartService } from './flow-chart/flow-chart.service';
 
 @Component({
     selector: 'rule',
     templateUrl: './rule.component.html'
 })
 export class RuleComponent {
-    constructor(public ruleFlowChartService: RuleFlowChartService) {}
+    constructor(public flowChartService: FlowChartService) {}
 }

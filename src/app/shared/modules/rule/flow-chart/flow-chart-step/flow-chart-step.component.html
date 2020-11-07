@@ -1,4 +1,4 @@
-<div class="rule-flow-chart-step">
+<div class="flow-chart-step">
   <div *ngIf="!flowChartStep.is_root" class="top-y-line-box">
     <div class="top-x-line-wrapper">
       <div
@@ -16,22 +16,22 @@
     </div>
   </div>
 
-  <div class="rule-flow-chart-step-box">
-    <div class="rule-flow-chart-step-wrapper">
-      <div class="rule-flow-chart-step-content" [ngClass]="{ 'trigger-open': flowChartStep?.directives?.open }">
+  <div class="flow-chart-step-box">
+    <div class="flow-chart-step-wrapper">
+      <div class="flow-chart-step-content" [ngClass]="{ 'trigger-open': flowChartStep?.directives?.open }">
         <div
-          class="rule-flow-chart-step-head unselected-able"
+          class="flow-chart-step-head unselected-able"
           [ngClass]="{ 'trigger-close': !flowChartStep?.directives?.open }"
         >
           <ng-container *ngIf="!flowChartStep.is_deleted">
-            <div class="rule-flow-chart-step-title" (click)="toggleFrameItemDetail()">{{ flowChartStep.element_name }}</div>
-            <thy-icon thyIconName="more" class="rule-flow-chart-step-menu"></thy-icon>
+            <div class="flow-chart-step-title" (click)="toggleFrameItemDetail()">{{ flowChartStep.element_name }}</div>
+            <thy-icon thyIconName="more" class="flow-chart-step-menu"></thy-icon>
           </ng-container>
           <ng-container *ngIf="flowChartStep.is_deleted">
-            <div class="rule-flow-chart-step-title">添加触发器</div>
+            <div class="flow-chart-step-title">添加触发器</div>
           </ng-container>
         </div>
-        <flow-rule-flow-chart-detail [flowChartDetail]="flowChartStep"></flow-rule-flow-chart-detail>
+        <flow-chart-detail [flowChartDetail]="flowChartStep"></flow-chart-detail>
       </div>
     </div>
 
@@ -43,22 +43,22 @@
       }"
     >
       <div class="bottom-y-line">
-        <div class="add-rule-flow-chart-step-box">
+        <div class="add-flow-chart-step-box">
           <button
-            class="add-rule-flow-chart-step-btn"
+            class="add-flow-chart-step-btn"
             thyButtonIcon="plus-bold"
             thyShape="circle-dashed"
             thySize="sm"
             (click)="toggleAddFrameItemPopper()"
           ></button>
           <div
-            class="add-rule-flow-chart-step-popper"
+            class="add-flow-chart-step-popper"
             [ngClass]="{
               active: addFrameItemPopper
             }"
           >
             <div class="add-frame-into-array unselected-able" (click)="addFrameItemIntoArray(flowChartStep)">增加一个并行元素</div>
-            <div class="add-rule-flow-chart-step unselected-able" (click)="addFrameItem(flowChartStep)">增加一个 action</div>
+            <div class="add-flow-chart-step unselected-able" (click)="addFrameItem(flowChartStep)">增加一个 action</div>
           </div>
         </div>
       </div>
@@ -66,6 +66,6 @@
   </div>
 
   <ng-container *ngIf="flowChartStep.next_step">
-    <flow-rule-flow-chart [flowChartStep]="flowChartStep.next_step"></flow-rule-flow-chart>
+    <flow-chart [flowChartStep]="flowChartStep.next_step"></flow-chart>
   </ng-container>
 </div>
