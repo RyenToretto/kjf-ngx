@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { FlowChartStep } from './flow-chart.types';
+import { FlowChartStep } from './entities';
 
 @Component({
     selector: 'flow-chart',

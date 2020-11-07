@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { FlowChartStep } from './flow-chart.types';
+import { FlowChartStep } from '../entities';
 
 @Injectable()
 export class FlowChartService {
