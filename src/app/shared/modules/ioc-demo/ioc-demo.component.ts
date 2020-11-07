@@ -4,7 +4,8 @@ import {
 
 @Component({
     selector: 'kjf-ioc-demo',
-    templateUrl: './ioc-demo.component.html'
+    templateUrl: './ioc-demo.component.html',
+    styleUrls: ['./ioc-demo.component.scss']
 })
 export class IocDemoComponent {
   constructor() {
