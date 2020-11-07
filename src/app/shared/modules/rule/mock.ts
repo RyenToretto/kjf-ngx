@@ -3,7 +3,7 @@ const flowChartData = {
     'element_id': '服务端生成的内部ID',
     'element_type': 'trigger',
     'element_name': 'trigger_1',
-    'isDeleted': false,
+    'is_deleted': false,
     'is_root': 1,
     'directives': {
         'key_1': 'value_1'

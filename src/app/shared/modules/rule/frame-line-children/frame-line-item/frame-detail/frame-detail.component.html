@@ -1,0 +1,6 @@
+<section class="frame-detail">
+  <div class="frame-detail-fold" [ngStyle]="{ height: flowChartStepDetail?.directives?.open ? 'auto' : '0' }">
+    <!-- <flow-rule-add-trigger *ngIf="flowChartStepDetail.is_deleted"></flow-rule-add-trigger> -->
+    <div class="frame-detail-content" *ngIf="!flowChartStepDetail.is_deleted">这是一段描述哈哈哈哈哈哈！</div>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+<div class="frame-line-item">
+  <div *ngIf="!flowChartStep.is_root" class="top-y-line-box">
+    <div class="top-x-line-wrapper">
+      <div
+        class="top-x-line"
+        [ngClass]="{
+          'only-one': true,
+          'first-frame': false,
+          'last-frame': false
+        }"
+      ></div>
+    </div>
+
+    <div class="top-y-line">
+      <div class="top-y-line-arrow"></div>
+    </div>
+  </div>
+
+  <div class="frame-line-item-box">
+    <div class="frame-line-item-wrapper">
+      <div class="frame-line-item-content" [ngClass]="{ 'trigger-open': flowChartStep?.directives?.open }">
+        <div
+          class="frame-line-item-head unselected-able"
+          [ngClass]="{ 'trigger-close': !flowChartStep?.directives?.open }"
+        >
+          <ng-container *ngIf="!flowChartStep.is_deleted">
+            <div class="frame-line-item-title" (click)="toggleFrameItemDetail()">{{ flowChartStep.element_name }}</div>
+            <thy-icon thyIconName="more" class="frame-line-item-menu"></thy-icon>
+          </ng-container>
+          <ng-container *ngIf="flowChartStep.is_deleted">
+            <div class="frame-line-item-title">添加触发器</div>
+          </ng-container>
+        </div>
+        <flow-frame-detail [flowChartStepDetail]="flowChartStep"></flow-frame-detail>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!isLeafNode"
+      class="bottom-y-line-box"
+      [ngClass]="{
+        'longer-y-line': flowChartStep.next_steps && flowChartStep.next_steps.length > 1
+      }"
+    >
+      <div class="bottom-y-line">
+        <div class="add-frame-line-item-box">
+          <button
+            class="add-frame-line-item-btn"
+            thyButtonIcon="plus-bold"
+            thyShape="circle-dashed"
+            thySize="sm"
+            (click)="toggleAddFrameItemPopper()"
+          ></button>
+          <div
+            class="add-frame-line-item-popper"
+            [ngClass]="{
+              active: addFrameItemPopper
+            }"
+          >
+            <div class="add-frame-into-array unselected-able" (click)="addFrameItemIntoArray(flowChartStep)">增加一个并行元素</div>
+            <div class="add-frame-line-item unselected-able" (click)="addFrameItem(flowChartStep)">增加一个 action</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="flowChartStep.next_step">
+    <flow-frame-line-children [flowChartStep]="flowChartStep.next_step"></flow-frame-line-children>
+  </ng-container>
+</div>

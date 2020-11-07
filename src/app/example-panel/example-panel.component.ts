@@ -23,7 +23,6 @@ import { IExampleData } from 'kjf-ngx/shared/helpers';
 }
 
 :host ::ng-deep section {
-  margin-bottom: 50px;
 }
 
 .examples-viewer-title {

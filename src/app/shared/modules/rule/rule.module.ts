@@ -6,6 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 import { RuleComponent } from './rule.component';
 
+import { RuleFrameLineChildrenComponent } from './frame-line-children/frame-line-children.component';
+import { RuleFrameLineItemComponent } from './frame-line-children/frame-line-item/frame-line-item.component';
+import {RuleFrameDetailComponent} from './frame-line-children/frame-line-item/frame-detail/frame-detail.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -18,6 +22,9 @@ import { RuleComponent } from './rule.component';
     exports: [ RuleComponent ],
     declarations: [
         RuleComponent,
+        RuleFrameLineChildrenComponent,
+        RuleFrameLineItemComponent,
+        RuleFrameDetailComponent,
     ],
     entryComponents: [
         RuleComponent,
