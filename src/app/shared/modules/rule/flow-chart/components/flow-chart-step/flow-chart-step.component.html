@@ -24,7 +24,7 @@
           [ngClass]="{ 'trigger-close': !flowChartStep?.directives?.open }"
         >
           <ng-container *ngIf="!flowChartStep.is_deleted">
-            <div class="flow-chart-step-title" (click)="toggleFrameItemDetail()">{{ flowChartStep.element_name }}</div>
+            <div class="flow-chart-step-title" (click)="toggleFlowChartDetail()">{{ flowChartStep.element_name }}</div>
             <thy-icon thyIconName="more" class="flow-chart-step-menu"></thy-icon>
           </ng-container>
           <ng-container *ngIf="flowChartStep.is_deleted">
@@ -49,16 +49,16 @@
             thyButtonIcon="plus-bold"
             thyShape="circle-dashed"
             thySize="sm"
-            (click)="toggleAddFrameItemPopper()"
+            (click)="toggleAddFlowChartStepPopper()"
           ></button>
           <div
             class="add-flow-chart-step-popper"
             [ngClass]="{
-              active: addFrameItemPopper
+              active: addFlowChartStepPopper
             }"
           >
-            <div class="add-frame-into-array unselected-able" (click)="addFrameItemIntoArray(flowChartStep)">增加一个并行元素</div>
-            <div class="add-flow-chart-step unselected-able" (click)="addFrameItem(flowChartStep)">增加一个 action</div>
+            <div class="add-frame-into-array unselected-able" (click)="addFlowChartStepIntoArray(flowChartStep)">增加一个并行元素</div>
+            <div class="add-flow-chart-step unselected-able" (click)="addFlowChartStep(flowChartStep)">增加一个 action</div>
           </div>
         </div>
       </div>

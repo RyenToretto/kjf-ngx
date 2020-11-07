@@ -14,29 +14,29 @@ export class RuleFlowChartStepComponent implements OnInit {
 
     @Input() flowChartStep: FlowChartStep;
 
-    addFrameItemPopper = false;
+    addFlowChartStepPopper = false;
 
     constructor(private flowChartService: FlowChartService) {}
 
     ngOnInit(): void {}
 
-    toggleFrameItemDetail(): void {
-        this.flowChartService.toggleFrameItemOpen(this.flowChartStep);
+    toggleFlowChartDetail(): void {
+        this.flowChartService.toggleFlowChartStepOpen(this.flowChartStep);
     }
 
-    toggleAddFrameItemPopper(): void {
-        this.addFrameItemPopper = !this.addFrameItemPopper;
+    toggleAddFlowChartStepPopper(): void {
+        this.addFlowChartStepPopper = !this.addFlowChartStepPopper;
     }
 
     // 新并行元素
-    addFrameItemIntoArray(parentFrameLine): void {
-        this.flowChartService.addFrameLineIntoArray(parentFrameLine);
-        this.addFrameItemPopper = false;
+    addFlowChartStepIntoArray(flowChartStep): void {
+        this.flowChartService.addFlowChartStepIntoArray(flowChartStep);
+        this.addFlowChartStepPopper = false;
     }
 
     // 新 action
-    addFrameItem(parentFrameLine): void {
-        this.flowChartService.addFrameLineItem(parentFrameLine);
-        this.addFrameItemPopper = false;
+    addFlowChartStep(flowChartStep): void {
+        this.flowChartService.addFlowChartStepItem(flowChartStep);
+        this.addFlowChartStepPopper = false;
     }
 }

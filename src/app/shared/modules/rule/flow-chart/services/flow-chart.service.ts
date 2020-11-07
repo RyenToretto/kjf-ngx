@@ -2,101 +2,68 @@ import { Injectable } from '@angular/core';
 
 import { FlowChartStep } from '../entities';
 
+import { mockFlowChartStep } from './flow-chart.mock';
+
 @Injectable()
 export class FlowChartService {
-    flowChartStep: FlowChartStep = {
-        _id: '1',
-        element_name: '中国',
-        element_type: 'trigger',
-        connector_name: 'connector_1',
-        is_deleted: false,
-        is_root: 1,
-        directives: {
-            // 除了这里的数据不确定外，其余的数据均已确定
-            displayName: '',
-            description: '',
-            type: 'select'
-        },
-        next_step: {
-            _id: '22',
-            element_name: '小峰峰',
-            element_type: 'action',
-            connector_name: 'connector_2',
-            is_root: 0,
-            directives: {
-                displayName: '',
-                description: '',
-                type: 'input'
-            },
-            next_step: {
-                _id: '333',
-                element_name: '肉肉',
-                element_type: 'action',
-                connector_name: 'connector_3',
-                is_root: 0,
-                directives: {
-                    displayName: '',
-                    description: '',
-                    type: 'button'
-                },
-                next_step: {
-                    _id: '4444',
-                    element_name: '乌龟',
-                    element_type: 'action',
-                    connector_name: 'connector_4',
-                    is_root: 0,
-                    directives: {
-                        displayName: '',
-                        description: '',
-                        type: 'button'
-                    },
-                }
-            }
-        }
-    };
+    flowChartStep: FlowChartStep = mockFlowChartStep;
 
     constructor() {}
 
     // 折叠/打开
-    toggleFrameItemOpen(parentFrameLine) {
-        parentFrameLine.directives.open = !parentFrameLine.directives.open;
+    toggleFlowChartStepOpen(flowChartStep) {
+        flowChartStep.directives.open = !flowChartStep.directives.open;
     }
 
-    // 新并行元素
-    addFrameLineIntoArray(parentFrameLine) {
-        const _id = 'keyNewBingXing' + Date.now();
+    // 新 并行 元素
+    addFlowChartStepIntoArray(flowChartStep) {
+        const newFlowChartStep: FlowChartStep = {
+            _id: 'front_end_id_' + Date.now(),
+            element_name: '元素 element_name_new',
+            element_type: '元素',
+            connector_name: 'connector_new_element',
+            is_root: 0,
+            directives: {
+                displayName: '',
+                description: '',
+                type: 'button'
+            },
+        };
 
-        if (parentFrameLine.next_step) {
-            parentFrameLine.next_step.push({
-                is_root: 0,
-                title: '存在数组 则新增',
-                _id
-            });
-        } else {
-            // 不存在数组 则创建数组
-            parentFrameLine.next_step = [
-                {
-                    is_root: 0,
-                    title: '不存在数组 则创建数组',
-                    _id
-                }
-            ];
+        if (flowChartStep.next_step) { // 已经存在下一个，则插入
+            // 1. 新元素 指向 下一个
+            newFlowChartStep.next_step = flowChartStep.next_step;
+
+            // 2. 当前元素 指向 新元素
+            flowChartStep.next_step = newFlowChartStep;
+        } else { // 不存在 则创建
+            flowChartStep.next_step = newFlowChartStep;
         }
     }
 
-    // 新 item
-    addFrameLineItem(parentFrameLine) {
-        const _id = 'keyNewAction' + Date.now();
-        parentFrameLine.next_step = [
-            {
-                is_root: 0,
-                title: '新 action',
-                _id,
-                next_step: parentFrameLine.next_step
-            }
-        ];
-    }
+    // 新 条件
+    addFlowChartStepItem(flowChartStep) {
+        const newFlowChartStep: FlowChartStep = {
+            _id: 'front_end_id_' + Date.now(),
+            element_name: '条件 element_name_new',
+            element_type: '条件',
+            connector_name: 'connector_new_tiao',
+            is_root: 0,
+            directives: {
+                displayName: '',
+                description: '',
+                type: 'button'
+            },
+        };
 
-    // 清空缓存
-    clearFrameLine() {}
+        if (flowChartStep.next_step) { // 已经存在下一个，则插入
+            // 1. 新条件 指向 下一个
+            newFlowChartStep.next_step = flowChartStep.next_step;
+
+            // 2. 当前元素 指向 新条件
+            flowChartStep.next_step = newFlowChartStep;
+        } else { // 不存在 则创建
+            flowChartStep.next_step = newFlowChartStep;
+        }
+    }
 }
