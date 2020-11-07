@@ -1,33 +1,16 @@
-import { trigger } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { RuleItemType } from '../entities';
 
 @Injectable({
     providedIn: 'root'
 })
-export class FrameLineService {
-    // frameLineMap 缓存
-    frameLineMap = {
-        keyChina: { open: true },
-
-        keyZhangJiaJie: { open: false },
-        keyCiLi: { open: false },
-
-        keyHobby: { open: false },
-        keyRouRou: { open: false },
-        keyWuGui: { open: false },
-
-        keyJiLin: { open: false },
-        keyChangchun: { open: false },
-        keyLiaoYuan: { open: false },
-        keyBorn: { open: false }
-    };
-
-    // frameLineData 缓存
+export class RuleFlowChartService {
+    // flowChartStepData 缓存
     flowChartStep: RuleItemType = {
         _id: '1',
         element_name: '中国',
         element_type: 'trigger',
+        connector_name: 'connector_1',
         is_deleted: false,
         is_root: 1,
         directives: {
@@ -40,6 +23,7 @@ export class FrameLineService {
             _id: '22',
             element_name: '小峰峰',
             element_type: 'action',
+            connector_name: 'connector_2',
             is_root: 0,
             directives: {
                 displayName: '',
@@ -50,6 +34,7 @@ export class FrameLineService {
                 _id: '333',
                 element_name: '肉肉',
                 element_type: 'action',
+                connector_name: 'connector_3',
                 is_root: 0,
                 directives: {
                     displayName: '',
@@ -60,6 +45,7 @@ export class FrameLineService {
                     _id: '4444',
                     element_name: '乌龟',
                     element_type: 'action',
+                    connector_name: 'connector_4',
                     is_root: 0,
                     directives: {
                         displayName: '',

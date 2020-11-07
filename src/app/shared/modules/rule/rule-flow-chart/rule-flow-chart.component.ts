@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RuleItemType } from '../../entities';
 
 @Component({
-    selector: 'flow-frame-line-children',
-    templateUrl: './frame-line-children.component.html'
+    selector: 'flow-rule-flow-chart',
+    templateUrl: './rule-flow-chart.component.html'
 })
-export class RuleFrameLineChildrenComponent implements OnInit {
+export class RuleFlowChartComponent implements OnInit {
     @Input() flowChartStep: RuleItemType;
 
     constructor() {}

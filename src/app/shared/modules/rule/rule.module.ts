@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 import { RuleComponent } from './rule.component';
 
-import { RuleFrameLineChildrenComponent } from './frame-line-children/frame-line-children.component';
-import { RuleFrameLineItemComponent } from './frame-line-children/frame-line-item/frame-line-item.component';
-import {RuleFrameDetailComponent} from './frame-line-children/frame-line-item/frame-detail/frame-detail.component';
+import { RuleFlowChartComponent } from './rule-flow-chart/rule-flow-chart.component';
+import { RuleFlowChartStepComponent } from './rule-flow-chart/rule-flow-chart-step/rule-flow-chart-step.component';
+import { RuleFlowChartDetailComponent } from './rule-flow-chart/rule-flow-chart-step/rule-flow-chart-detail/rule-flow-chart-detail.component';
+
 
 @NgModule({
     imports: [
@@ -22,9 +23,10 @@ import {RuleFrameDetailComponent} from './frame-line-children/frame-line-item/fr
     exports: [ RuleComponent ],
     declarations: [
         RuleComponent,
-        RuleFrameLineChildrenComponent,
-        RuleFrameLineItemComponent,
-        RuleFrameDetailComponent,
+
+        RuleFlowChartComponent,
+        RuleFlowChartStepComponent,
+        RuleFlowChartDetailComponent,
     ],
     entryComponents: [
         RuleComponent,

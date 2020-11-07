@@ -3,6 +3,7 @@ export interface RuleItemType {
     _id?: string | undefined;
     element_name?: string;
     element_type?: string;
+    connector_name?: string;
     is_deleted?: boolean;
     directives?: object;
     next_step?: RuleItemType;
