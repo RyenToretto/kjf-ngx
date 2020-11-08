@@ -4,7 +4,7 @@ import { FlowChartStep } from '../entities';
 
 import { mockFlowChartStep } from './flow-chart.mock';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class FlowChartService {
     flowChartStep: FlowChartStep = mockFlowChartStep;
 

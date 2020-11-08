@@ -5,7 +5,15 @@ import { FormsModule } from '@angular/forms';
 
 import { RuleComponent } from './rule.component';
 
-import { FlowChartModule } from './flow-chart/flow-chart.module';
+import { RuleFlowChartComponent } from './flow-chart/flow-chart.component';
+import { RuleFlowChartStepComponent } from './flow-chart/flow-chart-detail/flow-chart-step/flow-chart-step.component';
+import { RuleFlowChartDetailComponent } from './flow-chart/flow-chart-detail/flow-chart-detail.component';
+
+const COMPONENTS = [
+    RuleFlowChartComponent,
+    RuleFlowChartStepComponent,
+    RuleFlowChartDetailComponent
+];
 
 @NgModule({
     imports: [
@@ -15,11 +23,11 @@ import { FlowChartModule } from './flow-chart/flow-chart.module';
             { path: '',  redirectTo: 'rule' },
             { path: 'rule', component: RuleComponent }
         ]),
-        FlowChartModule
     ],
     exports: [ RuleComponent ],
     declarations: [
         RuleComponent,
+        ...COMPONENTS
     ],
     entryComponents: [
         RuleComponent,
