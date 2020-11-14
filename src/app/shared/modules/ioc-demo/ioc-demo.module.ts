@@ -7,6 +7,7 @@ import { IocDemoComponent } from './ioc-demo.component';
 
 import { ClassInjectComponent } from './class-inject/class-inject.component';
 import { LimitInjectComponent } from './limit-inject/limit-inject.component';
+import { InjectDesComponent } from './inject-des/inject-des.component';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import { LimitInjectComponent } from './limit-inject/limit-inject.component';
         IocDemoComponent,
         ClassInjectComponent,
         LimitInjectComponent,
+        InjectDesComponent,
     ],
     entryComponents: [
         IocDemoComponent,

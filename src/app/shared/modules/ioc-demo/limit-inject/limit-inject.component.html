@@ -1,10 +1,12 @@
 <section class="limit-inject">
   <br />
-  <hr />
+  <br />
   limit-inject component html
-  <br />
-  <button class="btn" (click)="addMsg($event)">增加一条消息</button>
-  <br />
+  <hr />
+  <div class="question-title">限定方式 的依赖注入:</div> 会实例化组件的同时，实例化依赖 为单例对象<br />
+
+  <button class="btn" (click)="addMsg($event)">增加一条消息</button><br />
+
   <div *ngFor="let msg of messageService.heroMessages">
     {{ msg }}
   </div>
