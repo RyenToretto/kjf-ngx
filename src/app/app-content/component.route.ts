@@ -55,4 +55,16 @@ export const routesConfig = [
             tmw: '新兴图像技术'
         }
     },
+    {
+        path: 'rxjs',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/rxjs-demo/rxjs-demo.module').then(m => m.RxjsDemoModule),
+        data: {
+            type: 'rxjs',
+            name: 'RxjsDemo',
+            cnName: 'RxjsDemo 测试',
+            description: '学习 rxjs',
+            tmw: 'Observable'
+        }
+    },
 ];
