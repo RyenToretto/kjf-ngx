@@ -11,26 +11,10 @@
       <li class="kjfui-menu-item" routerLinkActive="kjfui-menu-item-selected">
         <a routerLink="get-start">快速开始</a>
       </li>
-
-      <li class="kjfui-menu-item" routerLinkActive="kjfui-menu-item-selected">
-        <a routerLink="ioc-demo">ioc-demo</a>
-      </li>
-
-      <li class="kjfui-menu-item" routerLinkActive="kjfui-menu-item-selected">
-        <a routerLink="rule">rule</a>
-      </li>
-
-      <li class="kjfui-menu-item" routerLinkActive="kjfui-menu-item-selected">
-        <a routerLink="alert" style="position: relative;"
-        >警告 alert
-          <sup class="kjfui-beta-label">Developing</sup>
-        </a>
-      </li>
-
     </ul>
 
     <nav class="side-nav">
-<!--      accordion-->
+      <d-accordion [data]="componentsDataDisplay" [linkType]="'routerLink'"></d-accordion>
     </nav>
 
   </div>
