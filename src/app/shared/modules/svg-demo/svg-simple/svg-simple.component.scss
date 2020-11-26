@@ -1,3 +1,10 @@
 .svg-simple {
   margin-bottom: 20px;
+  svg {
+    stroke: #000; /**** 黑色线条绘制 ****/
+    stroke-width: 5; /**** 粗细 5px 的 ****/
+    stroke-linecap: round;  /**** 边角平滑 ****/
+    stroke-linejoin: round;  /**** 边角平滑 ****/
+    fill: none; /**** 无填充的 ****/
+  }
 }
