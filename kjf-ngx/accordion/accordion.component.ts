@@ -91,10 +91,6 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit {
     }
     // 默认激活
     initActiveItem() {
-        console.log('\nflatten 94 arr');
-        console.log(this.data);
-        console.log('\nflatten 94 childrenKey');
-        console.log(this.childrenKey);
         const activeItem = this.flatten(this.data, this.childrenKey)
             .filter(item => item[this.activeKey]).pop();
         if (activeItem) {

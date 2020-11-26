@@ -2,7 +2,165 @@
   <br />
   <br />
   kjf-rxjs-simple.component.html
+
   <hr />
-  <div class="question-title">什么是rxjs:</div> 新兴图像技术<br />
+  <div class="question-title">在前端，我们通常有这么一些方式来<span class="kjf-bolder-font">
+    处理异步 </span>的东西：
+  </div>
+  回调 ---- 事件 ---- Promise ---- <a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023024381818112" target="_blank">
+  Generator </a> <br />
+  回调、事件或者类似订阅发布 ===> 适合处理<span class="kjf-bolder-font"> 分发 </span>的需求 <br />
+  Promise和Generator ===> 适合处理<span class="kjf-bolder-font"> 流程性质 </span>的需求 <br />
+
+  <br />
+  <hr />
+  <div class="question-title">什么是rxjs:</div>
+  事件的 <a href="https://www.lodashjs.com/" target="_blank">lodash</a><br />
+  从事件到流，它被称为lodash for events，倒不如说是<span class="kjf-bolder-font"> lodash for stream </span>更贴切<br />
+  我们可以把
+  <span class="kjf-bolder-font"> 用户操作 </span>
+  <span class="kjf-bolder-font"> 网络响应 </span>
+  <span class="kjf-bolder-font"> 定时器 </span>
+  <span class="kjf-bolder-font"> Worker </span>
+  等等一切输入都当做数据流来处理<br />
+
+  <code>
+    <pre>
+    Observable 可观察序列，只出不进
+    Observer 观察者，只进不出
+    Subject 可出可进的可观察序列，可作为观察者
+    ReplaySubject 带回放
+    Subscription 订阅关系----订阅之后形成的一个订阅关系，可以用于取消订阅
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span (click)="toChildComponent('create_date_stream')">
+    1. RxJS提供了各种API来<h5 class="kjf-inline-pointer">创建数据流</h5>:
+    </span>
+      单值：of, empty, never
+      多值：from
+      定时：interval, timer
+      从事件创建：fromEvent
+      从Promise创建：fromPromise
+      自定义创建：create
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span (click)="toChildComponent('rxjs_demo')">
+    2. 数据流是一种可观察的序列，可以被订阅
+    </span>
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span (click)="toChildComponent('rxjs_demo')">
+    3. 数据流也可以被用来做一些 <span class="kjf-bolder-font">转换操作</span>，比如：
+    </span>
+      改变数据形态：map, mapTo, pluck
+      过滤一些值：filter, skip, first, last, take
+      时间轴上的操作：delay, timeout, throttle, debounce, audit, bufferTime
+      累加：reduce, scan
+      异常处理：throw, catch, retry, finally
+      条件执行：takeUntil, delayWhen, retryWhen, subscribeOn, ObserveOn
+      转接：switch
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span (click)="toChildComponent('muti_stream')">
+    4. <span class="kjf-bolder-font">对若干个数据流进行<h5 class="kjf-inline-pointer">组合</h5></span>，比如：
+    </span>
+      concat，保持原来的序列顺序连接两个数据流
+      merge，合并序列
+      race，预设条件为其中一个数据流完成
+      forkJoin，预设条件为所有数据流都完成
+      zip，取各来源数据流最后一个值合并为对象
+      combineLatest，取各来源数据流最后一个值合并为数组
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span (click)="toChildComponent('usual_operator')">
+    5. <h5 class="kjf-inline-pointer"><span class="kjf-bolder-font">常见操作符</span></h5>，比如：
+    </span>
+      retry – 失败时重试
+      repeat – 成功时重试
+      delay – 延迟
+      toArray – 收集为数组
+      debounceTime – 防抖
+      switchMap – 切换成另一个流
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span (click)="toChildComponent('rxjs_demo')">
+    6. <span class="kjf-bolder-font">operator 规律：</span>
+    </span>
+      当你掌握了一些基本操作符之后，就可以让自己的操作符知识翻倍了。
+
+      这是因为 RxJS 中的很多操作符都遵循着同样的命名模式。比如：
+
+      <span class="kjf-bolder-font">xxxWhen – 满足条件时 xxx</span>
+        它接受一个 Observable 型参数作为条件流，一旦这个条件流中出现任意数据，则进行 xxx 操作。
+        如 retryWhen(notifier$)，其中的 notifier$ 就是一个条件流。
+        当输入流出现异常时，就会开始等待 notifier$ 流中出现数据，
+        一旦出现了任何数据（不管是什么值），就会开始执行重试逻辑。
+
+      <span class="kjf-bolder-font">xxxCount – 拿到 n 个数据项时 xxx</span>
+        它接受一个数字型参数作为阈值，一旦从输入流中取到了 n 个数据，则进行 xxx 操作。
+        如 bufferCount(3) 表示每拿到 3 个数据就进行一次 buffer 操作。
+        这个操作可以看做是 xxxWhen 的语法糖。
+
+      <span class="kjf-bolder-font">xxxTime – 超时后 xxx</span>
+        它接受一个超时时间作为参数，从输入流中取数据，一旦到达超时时间，则执行 xxx 操作。
+        比如前面讲过的 debounceTime 其实遵循的就是这种模式。
+        这个操作可以看做 xxxWhen 的语法糖。
+
+      <span class="kjf-bolder-font">xxxTo – 用立即量代替 Lambda 表达式</span>
+        它接受一个立即量作为参数，相当于 xxx(()=&gt;value))。
+        比如 mapTo('a') 其实是 map(()=&gt;'a') 的语法糖，也就是说无论输入流中给出的值是什么，
+        我往输出流中放入的都是这个固定的值。
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span (click)="toChildComponent('rxjs_demo')">
+    7. <span class="kjf-bolder-font">坑与最佳实践：</span>
+    </span>
+      <span class="kjf-bolder-font">取消订阅</span>
+        subscribe 之后，你的回调函数就被别人引用了，因此如果不撤销对这个回调函数的引用，那么与它相
+        关的内存就永远不会释放，同时，它仍然会在流中有数据过来时被调用，可能会导致奇
+        怪的 console.log 等意外行为。
+        因此，必须找到某个时机撤销对这个回调函数的引用。但其实不一定需要那么麻烦。
+        解除对回调函数的引用有两种时机，
+          一种是这个流完成（complete，包括正常结束和异常结束）了，
+            当流完成时，会自动解除全部订阅回调，而所有的有限流都是会自动完成的。
+            只有无尽流才需要特别处理，也就是订阅方要主动取消订阅。
+          一种是订阅方主动取消。
+        当调用 Observable 的 subscribe 方法时，会返回一个 Subscription 类型的引用，它实际上是一
+        个订阅凭证。把它保存下来，等恰当的时机调用它的 unsubscribe 方法就可以取消订阅了。
+          比如在 Angular 中，如果你订阅了无尽流，那么就需要把订阅凭证保存在私有变量里，并且
+          在 ngOnDestroy 回调中调用它的 unsubscribe 方法。
+
+      <span class="kjf-bolder-font">类型检查</span>
+        只要有可能，请尽量使用 TypeScript 来书写 RxJS 程序。
+        由于大量 operator 都会改变流中的数据类型，因此如果靠人力来追踪数据类型的变化既繁琐又容易出错。
+        TypeScript 的类型检查可以给你提供很大的帮助，既省心又安全，而且这两个都是微软家的，搭配使用，风味更佳。
+
+      <span class="kjf-bolder-font">代码风格式</span>
+        如同所有 FP 程序一样，ReactiveX 的代码也应该由一系列小的、单一职责的、无副作用的函数组成。
+        虽然 JavaScript 无法像 Java 中那样对 Lambda 表达式的副作用做出编译期限制，但是仍然要遵循同
+        样的原则，坚持无副作用和数据不变性。
+    </pre>
+  </code>
 
 </section>
