@@ -3,7 +3,7 @@ import { ExamplePanelComponent } from '../example-panel/example-panel.component'
 export const routesConfig = [
     {
         path: '',
-        redirectTo: 'ioc',
+        redirectTo: 'rxjs',
         pathMatch: 'full',
         data: {}
     },
@@ -42,5 +42,29 @@ export const routesConfig = [
             description: '用于向用户显示警告的信息。',
             tmw: '当页面需要向用户发出警告信息时。'
         }
-    }
+    },
+    {
+        path: 'svg',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/svg-demo/svg-demo.module').then(m => m.SvgDemoModule),
+        data: {
+            type: 'svg',
+            name: 'SvgDemo',
+            cnName: 'SvgDemo 测试',
+            description: '学习 Svg',
+            tmw: '新兴图像技术'
+        }
+    },
+    {
+        path: 'rxjs',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/rxjs-demo/rxjs-demo.module').then(m => m.RxjsDemoModule),
+        data: {
+            type: 'rxjs',
+            name: 'RxjsDemo',
+            cnName: 'RxjsDemo 测试',
+            description: '学习 rxjs',
+            tmw: 'Observable'
+        }
+    },
 ];

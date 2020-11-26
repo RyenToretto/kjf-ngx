@@ -33,3 +33,13 @@ a:hover {
     cursor: pointer;
   }
 }
+
+.kjf-inline-pointer {
+  display: inline;
+  cursor: pointer;
+  color: $custom-link-color;
+}
+
+.kjf-bolder-font {
+  font-weight: 700;
+}
