@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 
 import { KjfRxjsService } from '../services/kjf-rxjs/kjf-rxjs.service';
 import { fromEvent } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import {filter, throttleTime} from 'rxjs/operators';
 
 @Component({
     selector: 'kjf-create-date-stream',
@@ -20,6 +20,7 @@ export class KjfCreateDateStreamComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         const input$ = fromEvent(this.elementUserInput.nativeElement, 'input');
         input$.pipe(
+            throttleTime(1000), // 1s 获取一次，节流
             filter((event: InputEvent) => (event.target as HTMLInputElement).value.length > 3)
         ).subscribe((e: InputEvent) => console.log((event.target as HTMLInputElement).value));
     }
