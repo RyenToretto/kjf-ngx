@@ -34,12 +34,67 @@ a:hover {
   }
 }
 
+.kjf-tab-2 {
+  display: block;
+  padding-left: 2%;
+}
+
+.kjf-tab-4 {
+  display: block;
+  padding-left: 4%;
+}
+
+.kjf-tab-6 {
+  display: block;
+  padding-left: 6%;
+}
+
+.kjf-tab-8 {
+  display: block;
+  padding-left: 8%;
+}
+
+.kjf-tab-10 {
+  display: block;
+  padding-left: 10%;
+}
+
+.kjf-tab-12 {
+  display: block;
+  padding-left: 12%;
+}
+
+.kjf-purple-font {
+  display: inline;
+  color: $purple-color;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.kjf-orange-font {
+  display: inline;
+  color: $orange-color;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.kjf-tips-font {
+  display: inline;
+  color: $tips-color;
+  font-weight: 700;
+}
+
 .kjf-inline-pointer {
   display: inline;
-  cursor: pointer;
   color: $custom-link-color;
+  font-family: $code-font-family;
+  font-weight: 700;
+  font-size: 1.2em;
+  letter-spacing: 0;
+  cursor: pointer;
 }
 
 .kjf-bolder-font {
   font-weight: 700;
+  font-size: 1.2em;
 }
