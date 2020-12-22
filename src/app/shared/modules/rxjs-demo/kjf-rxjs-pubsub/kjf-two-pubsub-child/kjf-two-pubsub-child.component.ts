@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { KjfRxjsService } from '../../services/kjf-rxjs/kjf-rxjs.service';
+import { KjfRxjsPubSubService } from '../../services/kjf-rxjs-pub-sub/kjf-rxjs-pub-sub.service';
+
+import { PubSubKey } from '../../services/kjf-rxjs-pub-sub/constants';
 
 @Component({
     selector: 'kjf-two-pubsub-child',
@@ -8,22 +11,16 @@ import { KjfRxjsService } from '../../services/kjf-rxjs/kjf-rxjs.service';
     styleUrls: ['./kjf-two-pubsub-child.component.scss'],
 })
 export class KjfTwoPubsubChildComponent implements OnInit {
-    secondValue: string;
+    inputSource: string;
 
-    fa: '';
-
-    constructor(public kjfRxjsService: KjfRxjsService) {}
+    constructor(
+        public kjfRxjsService: KjfRxjsService,
+        public rxjsPubSub: KjfRxjsPubSubService
+    ) {}
 
     ngOnInit(): void {}
 
-    fabu() {
-        // 发布
-        this.kjfRxjsService.subject.subscribe();
-        this.kjfRxjsService.subject.next(this.fa);
-    }
-
-    // 手动取消订阅,取消之后两个组件之间不会再进行通信
-    cancle() {
-        this.kjfRxjsService.subject.unsubscribe();
+    handleInput(elementInputValue) {
+        this.rxjsPubSub.publishPayload({ key: PubSubKey.input_change, value: elementInputValue}); // 发布
     }
 }
