@@ -1,39 +1,183 @@
 <section class="kjf-rxjs-simple">
-  <br />
-  <br />
-  kjf-rxjs-simple.component.html
-
-  <hr />
-  <div class="question-title">在前端，我们通常有这么一些方式来<span class="kjf-bolder-font">
+  <section>
+    <span (click)="toChildComponent('rxjs-pubsub')">rxjs发布订阅测试</span>
+    <br />
+    <hr />
+    <div class="question-title">在前端，我们通常有这么一些方式来<span class="kjf-bolder-font">
     处理异步 </span>的东西：
-  </div>
-  回调 ---- 事件 ---- Promise ---- <a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023024381818112" target="_blank">
-  Generator </a> <br />
-  回调、事件或者类似订阅发布 ===> 适合处理<span class="kjf-bolder-font"> 分发 </span>的需求 <br />
-  Promise和Generator ===> 适合处理<span class="kjf-bolder-font"> 流程性质 </span>的需求 <br />
+    </div>
+    <p class="kjf-tab-2">
+      回调 ---- 事件 ---- Promise ---- <a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023024381818112" target="_blank">
+      Generator </a> <br />
+    </p>
+    <p class="kjf-tab-4">
+      回调、事件或者类似订阅发布 ===> 适合处理<span class="kjf-bolder-font"> 分发 </span>的需求 <br />
+      Promise和Generator ===> 适合处理<span class="kjf-bolder-font"> 流程性质 </span>的需求 <br />
+    </p>
+  </section>
 
-  <br />
-  <hr />
-  <div class="question-title">什么是rxjs:</div>
-  事件的 <a href="https://www.lodashjs.com/" target="_blank">lodash</a><br />
-  从事件到流，它被称为lodash for events，倒不如说是<span class="kjf-bolder-font"> lodash for stream </span>更贴切<br />
-  我们可以把
-  <span class="kjf-bolder-font"> 用户操作 </span>
-  <span class="kjf-bolder-font"> 网络响应 </span>
-  <span class="kjf-bolder-font"> 定时器 </span>
-  <span class="kjf-bolder-font"> Worker </span>
-  等等一切输入都当做数据流来处理<br />
+  <section>
+    <br />
+    <hr />
+    <div class="question-title">
+      <a href="https://rxjs-dev.firebaseapp.com/" target="_blank">
+        <span class="kjf-inline-pointer">什么是rxjs:</span>
+      </a>
+    </div>
+    <p class="kjf-tab-2">
+      我们都知道 JS 是什么，那么什么是 Rx 呢？
+    </p>
+    <p class="kjf-tab-4">
+      Rx 是 Reactive Extension（也叫 ReactiveX）的简称，指的是实践响应式编程的一套工具<br />
+      Rx 官网首页的介绍是<span class="kjf-purple-font">一套通过可监听流来做异步编程的 API</span>（An API for asynchronous programming with observable streams）。<br />
+      Rx 最早是由微软开发的 LinQ 扩展出来的开源项目，之后由开源社区维护，有多种语言的实现，如 Java 的 RxJava，Python 的 RxPY 等，而 RxJS 就是 Rx 的 JavaScript 语言实现。
+    </p>
+  </section>
+
+  <section>
+    <br />
+    <hr />
+    RxJS 引入了两种重要的编程思想：函数式编程和响应式编程。<br />
+    实际上Rx 组合了观察者模式（Observer pattern ）、迭代器模式（Iterator pattern）和函数式编程
+
+    <div>
+      <p class="kjf-tab-2">
+        <span class="kjf-orange-font">观察者模式（Observer pattern ）</span>
+      </p>
+      <p class="kjf-tab-4 kjf-purple-font">
+        特点：渐进式使用数据的，数据是推送（push）过来的
+      </p>
+      <p class="kjf-tab-4">
+        观察者模式，我们其实比较熟悉了。订阅者订阅后，发布者吐出数据时，订阅者会响应式进行处理。
+      </p>
+      <p class="kjf-tab-4">
+        比如各种 DOM 事件的监听，也是观察者模式的一种实践。核心就是发布者发布事件，观察者选择时机去订阅（subscribe）事件。
+      </p>
+    </div>
+
+    <div>
+      <p class="kjf-tab-2">
+        <span class="kjf-orange-font">迭代器模式（Iterator pattern）</span>
+      </p>
+      <p class="kjf-tab-4 kjf-purple-font">
+        特点：渐进式使用数据的，数据是自己去拉取（pull）的 <br />
+      </p>
+      <p class="kjf-tab-4">
+        ！！！【Rx 中的数据是 Observable 推送的，观察者不需要主动去拉取。】
+      </p>
+      <p class="kjf-tab-4">
+        响应式编程抽象出了流这个概念，提高了代码的抽象级别，不用去关心大量的实现细节，而专注于对数据流的操作。
+      </p>
+    </div>
+
+    <div>
+      <p class="kjf-tab-2">
+        <span class="kjf-orange-font">函数式编程</span>
+      </p>
+      <p class="kjf-tab-4">
+        函数式编程（Functional Programming，简称 FP）是一种编程范式，强调<span class="kjf-purple-font">使用函数来思考问题、编写代码</span>
+        <br />对函数的使用有一些特殊要求：
+      </p>
+
+      <div>
+        <p class="kjf-tab-6">（1）声明式（Declarative）</p>
+        <p class="kjf-tab-10">让开发者只需要表达”想要做什么”，而不需要表达“怎么去做”。</p>
+      </div>
+
+      <div>
+        <p class="kjf-tab-6">（2）纯函数（Pure Function）</p>
+        <div>
+          <p class="kjf-tab-10">
+            指的是执行结果由输入参数决定，参数相同时结果相同，不受其他数据影响，并且不会带来副作用（Side Effect）的函数。 <br />
+            <span class="kjf-orange-font">副作用</span>指的是 <span class="kjf-purple-font">函数做了和本身运算返回值没有关系的事情</span>
+          </p>
+          <p class="kjf-tab-12">如修改外部变量或传入的参数对象，甚至是执行 console.log 都算是 Side Effect。</p>
+          <p class="kjf-tab-12">前端中常见的副作用有发送 http 请求、操作 DOM、调用 alert 或者 confirm 函数等。</p>
+        </div>
+        <p class="kjf-tab-10">满足纯函数的特性也叫做引用透明度（Referential Transparency）。</p>
+      </div>
+
+      <div>
+        <p class="kjf-tab-6">（3）数据不可变性（Immutability）</p>
+        <p class="kjf-tab-10">指这个数据一旦产生，它的值就永远不会变。</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="kjf-tab-2">
+        <span class="kjf-orange-font">响应式编程</span>
+      </p>
+      <p class="kjf-tab-4">
+        中文维基上说响应式编程（Reactive Programming）是一种面向数据流（stream）和变化传播的编程范式。
+      </p>
+      <p class="kjf-tab-4">
+        响应式编程抽象出了流这个概念，提高了代码的抽象级别，不用去关心大量的实现细节，而专注于对数据流的操作。
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <br />
+    <hr />
+    事件的 <a href="https://www.lodashjs.com/" target="_blank">lodash</a><br />
+    <p class="kjf-tab-2">
+      从事件到流，它被称为lodash for events，倒不如说是<span class="kjf-bolder-font"> lodash for stream </span>更贴切<br />
+      我们可以把
+      <span class="kjf-bolder-font"> 用户操作 </span>
+      <span class="kjf-bolder-font"> 网络响应 </span>
+      <span class="kjf-bolder-font"> 定时器 </span>
+      <span class="kjf-bolder-font"> Worker </span>
+      等等一切输入都当做数据流来处理<br />
+    </p>
+  </section>
 
   <code>
     <pre>
-    Observable 可观察序列，只出不进
-    Observer 观察者，只进不出
+
+    <h5 class="kjf-inline-pointer" (click)="toChildComponent('observable')">Observable 可观察序列，只出不进</h5>
+
+    <h5 class="kjf-inline-pointer" (click)="toChildComponent('observable')">Observer 观察者，只进不出</h5>
+      是一个有三个方法的对象 &#123;
+        next: 当 Observable 发出新的值时被调用，接收这个值作为参数
+        complete：当 Observable 完结，没有更多数据时被调用。complete 之后，next 方法无效
+        error：当 Observable 内部发生错误时被调用，之后不会调用 complete，next 方法无效
+      &#125;
+
     Subject 可出可进的可观察序列，可作为观察者
+
     ReplaySubject 带回放
+
     Subscription 订阅关系----订阅之后形成的一个订阅关系，可以用于取消订阅
     </pre>
   </code>
 
+  <code>
+    <pre>
+    <span>
+    0. RxJS 的 import 路径有以下 5 种：
+    </span>
+      (1) 创建 Observable 的方法、types、schedulers 和一些工具方法
+          import [
+            Observable,
+            Subject,
+            asapScheduler,
+            pipe, of, from, interval, merge, fromEvent, SubscriptionLike, PartialObserver
+          ] from 'rxjs';
+
+      (2) 操作符 operators
+          import [ map, filter, scan ] from 'rxjs/operators';
+
+      (3) webSocket
+          import [ webSocket ] from 'rxjs/webSocket';
+
+      (4) ajax
+          import [ ajax ] from 'rxjs/ajax';
+
+      (5) 测试
+          import [ TestScheduler ] from 'rxjs/testing';
+    </pre>
+  </code>
+  <br /> <span class="kjf-tips-font">tips: </span>$ 符号结尾，是 RxJS 中的一种惯例 <br />
   <code>
     <pre>
     <span (click)="toChildComponent('create_date_stream')">

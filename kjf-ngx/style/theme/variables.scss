@@ -33,6 +33,7 @@ $font-size-page-title: $font-size-primary !default;
 $font-variant-base: tabular-nums !default;
 $font-family: 'Helvetica Neue', helvetica, arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei',
 sans-serif;
+$code-font-family: Consolas, Menlo, Courier, monospace;
 
 $hr-color: $gray-base !default;
 
@@ -59,3 +60,6 @@ $kjf-dividing-line: #dfe1e6 !default;
 $kjf-form-control-line-active: #5e7ce0 !default;
 $kjf-form-control-line-active-hover: #344899 !default;
 /**** svg over ****/
+$orange-color: #c97c59 !default;
+$purple-color: #9623bd !default;
+$tips-color: #2ac77f !default;

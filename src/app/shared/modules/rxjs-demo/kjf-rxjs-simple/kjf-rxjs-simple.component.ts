@@ -15,7 +15,6 @@ export class KjfRxjsSimpleComponent implements OnInit {
     ngOnInit(): void {}
 
     toChildComponent(path: string) {
-        console.log('==toChildComponent==> ' + path);
         const navigation = this.router.url.split('/');
         navigation.pop();
         navigation.push(path);
