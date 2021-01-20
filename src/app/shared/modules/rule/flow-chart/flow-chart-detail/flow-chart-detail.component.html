@@ -1,6 +1,6 @@
 <section class="flow-chart-detail">
   <div class="flow-chart-detail-fold" [ngStyle]="{ height: flowChartDetail?.directives?.open ? 'auto' : '0' }">
-    <!-- <flow-rule-add-trigger *ngIf="flowChartDetail.is_deleted"></flow-rule-add-trigger> -->
+    <flow-rule-add-trigger *ngIf="flowChartDetail.is_deleted"></flow-rule-add-trigger>
     <div class="flow-chart-detail-content" *ngIf="!flowChartDetail.is_deleted">这是一段描述哈哈哈哈哈哈！</div>
   </div>
 </section>

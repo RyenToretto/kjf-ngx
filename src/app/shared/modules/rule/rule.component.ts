@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FlowChartService } from './flow-chart/services/flow-chart.service';
+import {FlowChartService} from '../services/flow-chart.service';
 
 @Component({
     selector: 'rule',

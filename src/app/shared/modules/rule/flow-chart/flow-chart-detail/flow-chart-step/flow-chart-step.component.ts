@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { FlowChartService } from '../../services/flow-chart.service';
-import { FlowChartStep } from '../../entities';
-
+import { FlowChartStep } from '../../../../entities';
+import { FlowChartService } from '../../../../services/flow-chart.service';
 
 @Component({
     selector: 'flow-chart-step',
@@ -10,7 +9,7 @@ import { FlowChartStep } from '../../entities';
 })
 export class RuleFlowChartStepComponent implements OnInit {
 
-    @Input() isLeafNode: Boolean;
+    @Input() isLeafNode: boolean;
 
     @Input() flowChartStep: FlowChartStep;
 
