@@ -20,18 +20,6 @@ export const routesConfig = [
         }
     },
     {
-        path: 'rule',
-        component: ExamplePanelComponent,
-        loadChildren: () => import('../shared/modules/rule/rule.module').then(m => m.RuleModule),
-        data: {
-            type: '测试',
-            name: 'Rule',
-            cnName: '尺子',
-            description: '测试尺子。',
-            tmw: '就测试一下模块'
-        }
-    },
-    {
         path: 'alert',
         component: ExamplePanelComponent,
         loadChildren: () => import('../../../kjf-ngx/alert/demo/alert-demo.module').then(m => m.AlertDemoModule),
