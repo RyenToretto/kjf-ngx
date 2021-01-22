@@ -1,0 +1,12 @@
+import {
+  Component
+} from '@angular/core';
+
+@Component({
+    selector: 'kjf-rxjs5-operators',
+    templateUrl: './rxjs5-operators.component.html',
+    styleUrls: ['./rxjs5-operators.component.scss']
+})
+export class Rxjs5OperatorsComponent {
+  constructor() {}
+}

@@ -1,0 +1,16 @@
+import { TestBed } from '@angular/core/testing';
+
+import {Rxjs5ReplaySubjectService} from './rxjs5-replay-subject.service';
+
+describe('HeroMessageService', () => {
+    let service: Rxjs5ReplaySubjectService;
+
+    beforeEach(() => {
+        TestBed.configureTestingModule({});
+        service = TestBed.inject(Rxjs5ReplaySubjectService);
+    });
+
+    it('should be created', () => {
+        expect(service).toBeTruthy();
+    });
+});

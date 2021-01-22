@@ -39,17 +39,35 @@ export class AppContentComponent implements OnInit, OnDestroy {
         this.groupedRoutes = [];
         for (const key in groupedRoutesObj) {
             if (key) {
-                const group = groupedRoutesObj[key].map((item) => {
-                        if (item.data.name) {
-                            return {
-                                title: item.data.name + ' ' + item.data.cnName,
-                                link: item.path,
-                            };
-                        } else {
-                            return {};
-                        }
+                const group = groupedRoutesObj[key].reduce((newArr, item, index) => {
+                    if (!item.data || !item.data.name) {
+                        return newArr;
                     }
-                ).filter((item) => Object.keys(item).length !== 0)
+                    const lastName = newArr[newArr.length - 1]
+                        && newArr[newArr.length - 1].title
+                        && newArr[newArr.length - 1].title.split('.')[0];
+                    if (item.data.name && item.data.name.startsWith(lastName)) {
+                        if (!newArr[newArr.length - 1].children) {
+                            newArr[newArr.length - 1] = {
+                                title: newArr[newArr.length - 1].title,
+                                children: [{
+                                    title: '综述',
+                                    link: newArr[newArr.length - 1].link
+                                }]
+                            };
+                        }
+                        newArr[newArr.length - 1].children = [...newArr[newArr.length - 1].children, {
+                            title: item.data.name + ' ' + item.data.cnName,
+                            link: item.path,
+                        }];
+                    } else {
+                        newArr.push({
+                            title: item.data.name + ' ' + item.data.cnName,
+                            link: item.path,
+                        });
+                    }
+                    return newArr;
+                }, []).filter((item) => Object.keys(item).length !== 0)
                     .sort(function (s1, s2) {
                         const prev = (s1.title).toUpperCase();
                         const next = (s2.title).toUpperCase();

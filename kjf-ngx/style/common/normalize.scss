@@ -214,9 +214,17 @@ samp {
 }
 
 code {
-  padding: 2px 4px;
-  // font-size: 90%;
-  color: $pink-dark;
+  display: block;
+  margin-bottom: 20px;
+  padding: 0;
+  border: 1px $gray-800 dashed;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
   background-color: $gray-f8;
-  border-radius: 1px;
+  color: $pink-dark;
+  > pre {
+    margin: 0;
+    padding: 0;
+  }
 }

@@ -370,8 +370,17 @@ body {
       margin: 1em 0;
     }
 
-    h3 {
-      @include font-title($font-size-secondary-card-title);
+    & > div {
+      font-size: 18px;
+      color: $gray-700;
+      > h3 {
+        @include font-title($font-size-secondary-card-title);
+        color: $gray-900;
+      }
+      & > div {
+        padding: 12px 0 24px;
+        color: $gray-700;
+      }
     }
   }
 }
