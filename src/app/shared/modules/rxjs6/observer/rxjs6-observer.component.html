@@ -1,5 +1,4 @@
 <div class="rxjs6-observer clearfix">
-  rxjs6-observer.component.html
   <code>
     <pre>
 
@@ -10,4 +9,28 @@
       {{'}'}}
     </pre>
   </code>
+
+  <code><pre [innerHTML]="code1"></pre></code>
+  <pre>
+
+    上面这段程式码会印出：
+      Jerry
+      Anna
+      complete
+  </pre>
+
+  <code><pre>
+    <span>
+    我们也可以直接把 next, error, complete 三个 function 依序传入 observable.subscribe，如下
+    </span>
+    observable.subscribe(
+        value => {{'{'}} console.log(value); {{' }'}},
+        error => {{'{'}} console.log('Error: ', error); {{' }'}},
+        () => {{'{'}} console.log('complete') {{' }'}}
+    )
+
+    <span>observable.subscribe 会在内部自动组成 observer 物件来操作</span>
+  </pre></code>
+
+  <br /><br /><br />
 </div>

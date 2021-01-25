@@ -61,7 +61,7 @@ export const routesConfig = [
         loadChildren: () => import('../shared/modules/rxjs6/observable/rxjs6-observable.module').then(m => m.Rxjs6ObservableModule),
         data: {
             type: 'rxjs6-learn',
-            name: '01. Observable',
+            name: '01. Observable 可观察对象',
             cnName: '',
             description: 'Observable 可观察序列，只出不进',
             tmw: 'Observable 什么时候使用呢'
@@ -73,7 +73,7 @@ export const routesConfig = [
         loadChildren: () => import('../shared/modules/rxjs6/observer/rxjs6-observer.module').then(m => m.Rxjs6ObserverModule),
         data: {
             type: 'rxjs6-learn',
-            name: '02. observer',
+            name: '02. observer 观察者对象',
             cnName: '',
             description: 'Observer 观察者，只进不出',
             tmw: 'observer 什么时候使用呢'
@@ -85,7 +85,7 @@ export const routesConfig = [
         loadChildren: () => import('../shared/modules/rxjs6/operators/rxjs6-operators.module').then(m => m.Rxjs6OperatorsModule),
         data: {
             type: 'rxjs6-learn',
-            name: '03. operators',
+            name: '03. operators 操作符',
             cnName: '',
             description: '学习 operators',
             tmw: 'operators 什么时候使用呢'
@@ -109,7 +109,7 @@ export const routesConfig = [
         loadChildren: () => import('../shared/modules/rxjs6/subscription/rxjs6-subscription.module').then(m => m.Rxjs6SubscriptionModule),
         data: {
             type: 'rxjs6-learn',
-            name: '04. subscription',
+            name: '04. subscription 订阅关系',
             cnName: '',
             description: 'Subscription 订阅关系----订阅之后形成的一个订阅关系，可以用于取消订阅',
             tmw: 'subscription 什么时候使用呢'
@@ -121,7 +121,7 @@ export const routesConfig = [
         loadChildren: () => import('../shared/modules/rxjs6/subjects/rxjs6-subjects.module').then(m => m.Rxjs6SubjectsModule),
         data: {
             type: 'rxjs6-learn',
-            name: '05. subjects',
+            name: '05. subjects 主体',
             cnName: '',
             description: '学习 subjects',
             tmw: 'subjects 什么时候使用呢'
@@ -171,7 +171,7 @@ export const routesConfig = [
         loadChildren: () => import('../shared/modules/rxjs6/scheduler/rxjs6-scheduler.module').then(m => m.Rxjs6SchedulerModule),
         data: {
             type: 'rxjs6-learn',
-            name: '06. scheduler',
+            name: '06. scheduler 调度器',
             cnName: '',
             description: '学习 scheduler',
             tmw: 'scheduler 什么时候使用呢'
