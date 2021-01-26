@@ -1,6 +1,43 @@
 <div class="rxjs6-behavior-subject clearfix">
-  <h5>(1) 基于 BehaviorSubject 的发布订阅</h5> <br />
-  参考：<a href="https://blog.csdn.net/my_love_download/article/details/101345248" target="_blank">这个</a><br />
-  <one-pubsub-child></one-pubsub-child>
-  <two-pubsub-child></two-pubsub-child>
+  <code>
+    <pre>
+      <span>
+      1. 基于 BehaviorSubject 的发布订阅
+        参考：<a href="https://blog.csdn.net/my_love_download/article/details/101345248" target="_blank">这个</a><br />
+        <one-pubsub-child></one-pubsub-child>
+        <two-pubsub-child></two-pubsub-child>
+      </span>
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+      <span>
+      2. 下面例子中，展示了如何用 0 初始化BehaviorSubject，当Observer订阅它时，0 是第一个被推送的值。
+        紧接着，在第二个 Observer 订阅 BehaviorSubject 之前，它推送了2，虽然订阅在推送2之后，但是第二个 Observer 仍然能接受到2：
+
+        var subject = new Rx.BehaviorSubject(0); /* 初始值 */
+        subject.subscribe({{'{'}}
+                next: (v) => console.log('observerA: ' + v)
+        {{'}'}});
+        subject.next(1);
+        subject.next(2);
+
+        subject.subscribe({{'{'}}
+                next: (v) => console.log('observerB: ' + v)
+        {{'}'}});
+
+        subject.next(3);
+      </span>
+    </pre>
+    <pre>
+      输出结果如下：
+        observerA: 0
+        observerA: 1
+        observerA: 2
+        observerB: 2
+        observerA: 3
+        observerB: 3
+    </pre>
+  </code>
 </div>

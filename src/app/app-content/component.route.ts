@@ -104,6 +104,19 @@ export const routesConfig = [
         }
     },
     {
+        path: 'combine-latest',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/rxjs6/operators/combine-latest/rxjs6-combine-latest.module')
+            .then(m => m.Rxjs6CombineLatestModule),
+        data: {
+            type: 'rxjs6-learn',
+            name: '03.2. combineLatest',
+            cnName: '',
+            description: '学习 combineLatest',
+            tmw: 'combineLatest 可以将多个 Observable 进行合并，并将它们最新的值作为输出'
+        }
+    },
+    {
         path: 'subscription',
         component: ExamplePanelComponent,
         loadChildren: () => import('../shared/modules/rxjs6/subscription/rxjs6-subscription.module').then(m => m.Rxjs6SubscriptionModule),
@@ -133,10 +146,10 @@ export const routesConfig = [
         loadChildren: () => import('../shared/modules/rxjs6/subjects/rxjs6-subject/rxjs6-subject.module').then(m => m.Rxjs6SubjectModule),
         data: {
             type: 'rxjs6-learn',
-            name: '05.1. subject',
+            name: '05.1. Subject',
             cnName: '',
             description: 'Subject 可出可进的可观察序列；可作为观察者',
-            tmw: 'subject 什么时候使用呢'
+            tmw: 'Subject 一类特殊的 Observable，它可以向多个 Observer 多路推送数值'
         }
     },
     {
@@ -146,10 +159,10 @@ export const routesConfig = [
             .then(m => m.Rxjs6BehaviorSubjectModule),
         data: {
             type: 'rxjs6-learn',
-            name: '05.2. behavior-subject',
+            name: '05.2. BehaviorSubject',
             cnName: '',
-            description: 'BehaviorSubject 带回放',
-            tmw: 'BehaviorSubject 什么时候使用呢'
+            description: 'BehaviorSubject 最新的值',
+            tmw: 'BehaviorSubject 总是保存最近向数据消费者发送的值，当一个 Observer 订阅后，它会即刻从 BehaviorSubject 收到“最新的值”'
         }
     },
     {
@@ -159,10 +172,23 @@ export const routesConfig = [
             .then(m => m.Rxjs6ReplaySubjectModule),
         data: {
             type: 'rxjs6-learn',
-            name: '05.3. replay-subject',
+            name: '05.3. ReplaySubject',
             cnName: '',
             description: 'ReplaySubject 带回放',
-            tmw: 'ReplaySubject 什么时候使用呢'
+            tmw: 'ReplaySubject 向新的订阅者回放旧数值'
+        }
+    },
+    {
+        path: 'async-subject',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/rxjs6/subjects/rxjs6-async-subject/rxjs6-async-subject.module')
+            .then(m => m.Rxjs6AsyncSubjectModule),
+        data: {
+            type: 'rxjs6-learn',
+            name: '05.3. AsyncSubject',
+            cnName: '',
+            description: 'AsyncSubject 完成后，推最后一个值',
+            tmw: 'AsyncSubject 仅会在执行完成后，推送执行环境中的最后一个值'
         }
     },
     {

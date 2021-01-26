@@ -1,0 +1,12 @@
+<div class="rxjs6-combine-latest clearfix">
+  <code>
+    <pre>
+    <span>
+    1. <span class="kjf-bolder-font">特点：</span>
+    </span>
+      - 会等到所有的 Observable 都 emit 一次数据之后才开始 emit 数据
+      - 在收集完一次数据之后，任何一个 Observable emit了数据，则会 emit 数据，并不会再次等待所有 Observable 再次 emit 数据
+      - 如果在所有 Observable 都 emit 数据之前，某个 Observable 执行了 complete，则 combineLatest 不会 emit 任何数据，直接 complete
+    </pre>
+  </code>
+</div>

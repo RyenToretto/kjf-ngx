@@ -1,3 +1,76 @@
 <div class="rxjs6-replay-subjec clearfix">
-  rxjs6-replay-subject.component.html
+  <code>
+    <pre>
+      <span>
+      1. 可以指定回放值的数量
+
+        var subject = new Rx.ReplaySubject(3); /* 回放数量 */
+        subject.subscribe({{'{'}}
+                next: (v) => console.log('observerA: ' + v)
+        {{'}'}});
+        subject.next(1);
+        subject.next(2);
+        subject.next(3);
+        subject.next(4);
+
+        subject.subscribe({{'{'}}
+                next: (v) => console.log('observerB: ' + v)
+        {{'}'}});
+
+        subject.next(5);
+      </span>
+    </pre>
+    <pre>
+      输出结果如下：
+        observerA: 1
+        observerA: 2
+        observerA: 3
+        observerA: 4
+        observerB: 2
+        observerB: 3
+        observerB: 4
+        observerA: 5
+        observerB: 5
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+      <span>
+      2. 除了回放数量，你也可以以毫秒为单位去指定“窗口时间”，决定 ReplaySubject 记录多久以前 Observable 推送的数值
+
+        var subject = new Rx.ReplaySubject(100, 500); /* 回放数量设置为100，把窗口时间设置为500毫秒 */
+
+        subject.subscribe({{'{'}}
+                next: (v) => console.log('observerA: ' + v)
+        {{'}'}});
+
+        var i = 1;
+        setInterval(() => subject.next(i++), 200);
+
+        setTimeout(() => {{'{'}}
+            /* 第二个Observer接受到3（600ms）, 4（800ms） 和 5（1000ms），这
+               些值均在订阅之前的500毫秒内推送（窗口长度 1000ms - 600ms = 400ms < 500ms）
+            */
+            subject.subscribe({{'{'}}
+            next: (v) => console.log('observerB: ' + v)
+          {{'}'}});
+        {{'}'}}, 1000);
+      </span>
+    </pre>
+    <pre>
+      输出结果如下：
+        observerA: 1
+        observerA: 2
+        observerA: 3
+        observerA: 4
+        observerA: 5
+        observerB: 3
+        observerB: 4
+        observerB: 5
+        observerA: 6
+        observerB: 6
+        ... ...
+    </pre>
+  </code>
 </div>

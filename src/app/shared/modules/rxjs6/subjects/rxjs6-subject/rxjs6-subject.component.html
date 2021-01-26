@@ -1,3 +1,42 @@
 <div class="rxjs6-subject clearfix">
-  redux-observable 就是用了 Subject 实体做的
+  <code>
+    <pre>
+      <span>
+      1. 普通的 Observable 并不具备多路推送的能力：
+
+      2. 每一个 Subject 都是一个 Observable（可观察对象）
+          Subject 的内部实现中，并不会在被订阅（subscribe）后创建新的执行环境。
+          它仅仅会把新的 Observer 注册在由它本身维护的 Observer 列表中
+
+      3. 每一个 Subject 也可以作为 Observer（观察者）
+          调用 next(theValue) 方法后，Subject 会向所有已经在其上注册的 Observer 多路推送 theValue
+      </span>
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+
+      var subject = new Rx.Subject();
+
+      subject.subscribe({{'{'}}
+          next: (v) => console.log('observerA: ' + v)
+      {{'}'}}});
+      subject.subscribe({{'{'}}
+          next: (v) => console.log('observerB: ' + v)
+      {{'}'}});
+
+      subject.next(1);
+      subject.next(2);
+    </pre>
+    <pre>
+
+      控制台输出结果如下：
+        observerA: 1
+        observerB: 1
+        observerA: 2
+        observerB: 2
+    </pre>
+  </code>
+
 </div>
