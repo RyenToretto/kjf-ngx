@@ -32,6 +32,18 @@ export const routesConfig = [
         }
     },
     {
+        path: 'popover',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../../../kjf-ngx/popover/demo/popover-demo.module').then(m => m.PopoverDemoModule),
+        data: {
+            type: '反馈',
+            name: 'Popover',
+            cnName: '悬浮提示',
+            description: '简单的文字提示气泡框。popover用来通知用户非关键性问题或提示某控件处于某特殊情况。',
+            tmw: '单击控件则显示提示，单击空白处提示消失，气泡浮层不承载复杂文本和操作。'
+        }
+    },
+    {
         path: 'svg',
         component: ExamplePanelComponent,
         loadChildren: () => import('../shared/modules/svg-demo/svg-demo.module').then(m => m.SvgDemoModule),
