@@ -8,18 +8,6 @@ export const routesConfig = [
         data: {}
     },
     {
-        path: 'ioc',
-        component: ExamplePanelComponent,
-        loadChildren: () => import('../shared/modules/ioc-demo/ioc-demo.module').then(m => m.IocDemoModule),
-        data: {
-            type: '学习',
-            name: 'IocDemo',
-            cnName: '控制反转测试',
-            description: '学习 angular 的控制反转。',
-            tmw: '解耦，代码复用，增强扩展性。'
-        }
-    },
-    {
         path: 'alert',
         component: ExamplePanelComponent,
         loadChildren: () => import('../../../kjf-ngx/alert/demo/alert-demo.module').then(m => m.AlertDemoModule),
@@ -53,6 +41,31 @@ export const routesConfig = [
             cnName: 'SvgDemo 测试',
             description: '学习 Svg',
             tmw: '新兴图像技术'
+        }
+    },
+    {
+        path: 'typescript',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/typescript/overview/typescript-overview.module')
+            .then(m => m.TypescriptOverviewModule),
+        data: {
+            type: 'typescript-learn',
+            name: '00. typescript 概览',
+            cnName: '',
+            description: 'typescript 描述',
+            tmw: 'typescript 简介'
+        }
+    },
+    {
+        path: 'observable',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/typescript/observable/rxjs6-observable.module').then(m => m.Rxjs6ObservableModule),
+        data: {
+            type: 'typescript-learn',
+            name: '01. Observable 可观察对象',
+            cnName: '',
+            description: 'Observable 可观察序列，只出不进',
+            tmw: 'Observable 什么时候使用呢'
         }
     },
     {
@@ -213,6 +226,30 @@ export const routesConfig = [
             cnName: '',
             description: '学习 scheduler',
             tmw: 'scheduler 什么时候使用呢'
+        }
+    },
+    {
+        path: 'angular',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/angular/overview/angular-overview.module').then(m => m.AngularOverviewModule),
+        data: {
+            type: 'angular-learn',
+            name: '00. angular 概览',
+            cnName: '',
+            description: 'angular 描述',
+            tmw: 'angular 简介'
+        }
+    },
+    {
+        path: 'ioc',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/angular/ioc/ioc-demo.module').then(m => m.IocDemoModule),
+        data: {
+            type: 'angular-learn',
+            name: '01. IocDemo',
+            cnName: '控制反转测试',
+            description: '学习 angular 的控制反转。',
+            tmw: '解耦，代码复用，增强扩展性。'
         }
     },
 ];

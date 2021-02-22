@@ -1,0 +1,75 @@
+<div class="angular-overview clearfix">
+  <code>
+    <pre>
+    <span>
+    0. <span class="kjf-bolder-font">坑与最佳实践：</span>
+    </span>
+      <span class="kjf-bolder-font">取消订阅</span>
+        subscribe 之后，你的回调函数就被别人引用了，因此如果不撤销对这个回调函数的引用，那么与它相
+        关的内存就永远不会释放，同时，它仍然会在流中有数据过来时被调用，可能会导致奇
+        怪的 console.log 等意外行为。
+        因此，必须找到某个时机撤销对这个回调函数的引用。但其实不一定需要那么麻烦。
+        解除对回调函数的引用有两种时机，
+          一种是这个流完成（complete，包括正常结束和异常结束）了，
+            当流完成时，会自动解除全部订阅回调，而所有的有限流都是会自动完成的。
+            只有无尽流才需要特别处理，也就是订阅方要主动取消订阅。
+          一种是订阅方主动取消。
+        当调用 Observable 的 subscribe 方法时，会返回一个 Subscription 类型的引用，它实际上是一
+        个订阅凭证。把它保存下来，等恰当的时机调用它的 unsubscribe 方法就可以取消订阅了。
+          比如在 Angular 中，如果你订阅了无尽流，那么就需要把订阅凭证保存在私有变量里，并且
+          在 ngOnDestroy 回调中调用它的 unsubscribe 方法。
+
+      <span class="kjf-bolder-font">类型检查</span>
+        只要有可能，请尽量使用 TypeScript 来书写 RxJS 程序。
+        由于大量 operator 都会改变流中的数据类型，因此如果靠人力来追踪数据类型的变化既繁琐又容易出错。
+        TypeScript 的类型检查可以给你提供很大的帮助，既省心又安全，而且这两个都是微软家的，搭配使用，风味更佳。
+
+      <span class="kjf-bolder-font">代码风格式</span>
+        如同所有 FP 程序一样，ReactiveX 的代码也应该由一系列小的、单一职责的、无副作用的函数组成。
+        虽然 JavaScript 无法像 Java 中那样对 Lambda 表达式的副作用做出编译期限制，但是仍然要遵循同
+        样的原则，坚持无副作用和数据不变性。
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span>
+    1. <span class="kjf-bolder-font">参考：</span>
+    </span>
+      <span class="kjf-bolder-font">弹珠图</span>
+        <a href="https://rxmarbles.com/" target="_blank">https://rxmarbles.com/</a>
+
+      <span class="kjf-bolder-font">ReactiveX文档</span>
+        <a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank">https://mcxiaoke.gitbooks.io/rxdocs/content/</a>
+
+      <span class="kjf-bolder-font">RxJS 6有哪些新变化？</span>
+        <a href="https://segmentfault.com/a/1190000014956260" target="_blank">https://segmentfault.com/a/1190000014956260</a>
+
+      <span class="kjf-bolder-font">30 天精通 rxjs</span>
+        <a href="https://ithelp.ithome.com.tw/articles/10189028" target="_blank">https://ithelp.ithome.com.tw/articles/10189028</a>
+
+      <span class="kjf-bolder-font">rxjs 简书学习资源</span>
+        <a href="https://www.jianshu.com/c/0521ef8586bb" target="_blank">https://www.jianshu.com/c/0521ef8586bb</a>
+
+      <span class="kjf-bolder-font">rxXXX git仓储</span>
+        <a href="https://github.com/ReactiveX?page=1" target="_blank">https://github.com/ReactiveX?page=1</a>
+
+      <span class="kjf-bolder-font">在线练习 rxjs</span>
+        <a href="http://reactivex.io/learnrx/" target="_blank">http://reactivex.io/learnrx/</a>
+
+      <span class="kjf-bolder-font">js 原生写 观察者模式、迭代器模式</span>
+        <a href="https://www.jianshu.com/p/fb9ff8c4dc6d" target="_blank">https://www.jianshu.com/p/fb9ff8c4dc6d</a>
+
+      <span class="kjf-bolder-font">mafeifan 技术博客</span>
+        <a href="https://blog.mafeifan.com/" target="_blank">https://blog.mafeifan.com/</a>
+
+      <span class="kjf-bolder-font">rxjs 响应式编程</span>
+        <a href="https://segmentfault.com/a/1190000015966793" target="_blank">https://segmentfault.com/a/1190000015966793</a>
+    </pre>
+  </code>
+
+  参考：<br />
+    作者：readilen：<br />
+    链接：<a href="https://www.jianshu.com/p/fb9ff8c4dc6d">https://www.jianshu.com/p/fb9ff8c4dc6d</a><br />
+    来源：简书 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br /><br /><br />
+</div>

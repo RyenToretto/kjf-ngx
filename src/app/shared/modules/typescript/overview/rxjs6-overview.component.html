@@ -1,0 +1,249 @@
+<div class="rxjs6-overview clearfix">
+  <code>
+    <pre>
+    <span>
+    0. <span class="kjf-bolder-font">整个 RxJS 说白了就是一个核心三个重点</span>
+    </span>
+      一个核心： Observable 再加上相关的 Operators(map, filter...)
+          这个部份是最重要的（三个重点本质上也是围绕著这个核心在转）
+
+      三个重点：
+        - Observer
+            一定会用到却是最简单的
+        - Subject
+            应用到的频率就相对低很多（redux-observable 就是用了 Subject 实体做的）
+        - Schedulers
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span>
+    1. <span class="kjf-bolder-font">在前端，我们通常有这么一些方式来<span class="kjf-bolder-font"> 处理异步 </span>的东西：</span>
+    </span>
+      回调 ---- 事件 ---- Promise ---- <a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023024381818112"
+                                    target="_blank">Generator </a> <br />
+      回调、事件、订阅发布 ===> 适合处理<span class="kjf-bolder-font"> 分发性质 </span>的需求 <br />
+      Promise和Generator ===> 适合处理<span class="kjf-bolder-font"> 流程性质 </span>的需求 <br />
+
+        代码：
+            var observable = Rx.Observable
+                .create(function(observer) {{'{'}}
+                  observer.next('Jerry'); // RxJS 4.x 以前的版本用 onNext
+                  observer.next('Anna');
+
+                  setTimeout(() => {{'{'}}
+                        observer.next('RxJS 30 days!');
+                  {{'}'}}, 30)
+                {{'}'}})
+
+            console.log('start');
+            observable.subscribe(function(value) {{'{'}}
+                  console.log(value);
+            {{'}'}});
+            console.log('end');
+        运行：
+          start
+          Jerry
+          Anna
+          end
+          RxJS 30 days!
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span>
+    2. <span class="kjf-bolder-font">什么是rxjs：</span>
+    </span>
+    我们都知道 JS 是什么，那么什么是 Rx 呢？ <br />
+      Rx 是 Reactive Extension（也叫 ReactiveX）的简称，指的是实践响应式编程的一套工具
+      <a href="https://rxjs-dev.firebaseapp.com/guide/overview" target="_blank">
+      Rx 官方</a>有介绍是<span class="kjf-purple-font">一套通过可监听流来做异步编程的 API</span>（An API for asynchronous programming with observable streams）。<br />
+      Rx 最早是由微软开发的 LinQ 扩展出来的开源项目，之后由开源社区维护，有多种语言的实现，如 Java 的 RxJava，Python 的 RxPY 等，而 RxJS 就是 Rx 的 JavaScript 语言实现。
+
+      从事件到流，它被称为 lodash for events，倒不如说是<span class="kjf-bolder-font"> lodash for stream </span>更贴切
+        我们可以把
+            <span class="kjf-bolder-font"> 用户操作 </span>
+            <span class="kjf-bolder-font"> 网络响应 </span>
+            <span class="kjf-bolder-font"> 定时器 </span>
+            <span class="kjf-bolder-font"> Worker </span>
+          等等一切输入都当做数据流来处理
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span>
+    3. 数据流是一种可观察的序列，可以被订阅</span>
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span>
+    4. <span class="kjf-bolder-font">RxJS 引入了两种重要的编程思想：函数式编程和响应式编程。</span>
+    </span>
+    实际上Rx 组合了观察者模式（Observer pattern ）、迭代器模式（Iterator pattern）和函数式编程
+      Observer 跟 Iterator 有个共通的特性，就是他们都是 渐进式(progressive) 的取得资料
+      差别只在于 Observer 是生产者(Producer)推送资料(push)，而 Iterator 是消费者(Consumer)要求资料(pull)
+
+      <span class="kjf-orange-font">观察者模式（Observer pattern ）</span>
+        <p class="kjf-purple-font">特点：渐进式使用数据的，数据是推送（push）过来的</p>
+          观察者模式，我们其实比较熟悉了。订阅者订阅后，发布者吐出数据时，订阅者会响应式进行处理。
+          比如各种 DOM 事件的监听，也是观察者模式的一种实践。核心就是发布者发布事件，观察者选择时机去订阅（subscribe）事件。
+
+      <span class="kjf-orange-font">迭代器模式（Iterator pattern）</span>
+        <p class="kjf-purple-font">特点：渐进式使用数据的，数据是自己去拉取（pull）的</p>
+          ！！！【Rx 中的数据是 Observable 推送的，观察者不需要主动去拉取。】
+        <p class="kjf-purple-font">延迟运算(evaluation strategy)</p>
+          或说 call-by-need，是一种运算策略(evaluation strategy)，
+          简单来说我们延迟一个表达式的运算时机, 直到真正需要它的值在做运算
+              function* getNumbers(words) {{'{'}}
+                for (let word of words) {{'{'}}
+                  if (/^[0-9]+$/.test(word)) {{'{'}}
+                    yield parseInt(word, 10);
+                  {{'}'}}
+                {{'}'}}
+              {{'}'}}
+              const iterator = getNumbers('30 天精通 RxJS (04)');
+              iterator.next(); // {{'{'}} value: 3, done: false {{'}'}}
+              iterator.next(); // {{'{'}} value: 0, done: false {{'}'}}
+              iterator.next(); // {{'{'}} value: 0, done: false {{'}'}}
+              iterator.next(); // {{'{'}} value: 4, done: false {{'}'}}
+              iterator.next(); //{{'{'}} value: undefined, done: true {{'}'}}
+            当我们把一个字串丢进 getNumbers 函式时，并没有马上运算出字串中的所有数字，
+            必须等到我们执行 next() 时，才会真的做运算
+
+      <span class="kjf-orange-font">函数式编程（Functional Programming，简称 FP）</span>
+        是一种编程范式，强调<p class="kjf-purple-font">使用函数来思考问题、编写代码</p>
+        <p class="kjf-purple-font">函数是一等公民</p>
+          也就是说函式能够被赋值给变数，函式也能够被当作参数传入另一个函式，也可当作一个函式的回传值
+
+        对函数的使用有一些特殊要求：
+          （1）声明式（Declarative）
+              让开发者只需要表达”想要做什么”，而不需要表达“怎么去做”。
+          （2）纯函数（Pure Function）
+              满足纯函数的特性也叫做引用透明度（Referential Transparency）。
+              指的是执行结果由输入参数决定，参数相同时结果相同，不受其他数据影响，并且不会带来副作用（Side Effect）的函数。
+                <span class="kjf-orange-font">副作用</span>指的是 <span class="kjf-purple-font">函数做了和本身运算返回值没有关系的事情</span>
+                  如修改外部变量或传入的参数对象，甚至是执行 console.log 都算是 Side Effect。
+                  前端中常见的副作用有发送 http 请求、操作 DOM、调用 alert 或者 confirm 函数等。
+          （3）数据不可变性（Immutability）
+              指这个数据一旦产生，它的值就永远不会变。
+
+        优势1. 可读性高
+          [9, 4].concat([8, 7]) // 合併阵列
+                .sort()  // 排序
+                .filter(x => x > 5) // 过滤出大于 5 的
+        优势2. 可维护性高
+          执行结果不依赖外部状态，且不会对外部环境有任何操作，使 Functional Programming 能更好的除错及撰写单元测试
+
+      <span class="kjf-orange-font">响应式编程（Reactive Programming）</span>
+        中文维基上说<a href="https://bk.tw.lvfukeji.com/baike-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B"
+           target="_blank">响应式编程</a>是一种面向数据流（stream）和变化传播的编程范式。
+          响应式编程抽象出了流这个概念，提高了代码的抽象级别，不用去关心大量的实现细节，而专注于对数据流的操作。
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span>
+    5. RxJS 的 import 路径有以下 5 种：
+    </span>
+      (1) 创建 Observable 的方法、types、schedulers 和一些工具方法
+          import {{'{'}}
+            Observable,
+            Subject,
+            asapScheduler,
+            pipe, of, from, interval, merge, fromEvent, SubscriptionLike, PartialObserver
+          {{'}'}} from 'rxjs';
+
+      (2) 操作符 operators
+          import  {{'{'}} map, filter, scan {{'}'}} from 'rxjs/operators';
+
+      (3) webSocket
+          import  {{'{'}} webSocket {{'}'}} from 'rxjs/webSocket';
+
+      (4) ajax
+          import  {{'{'}} ajax {{'}'}} from 'rxjs/ajax';
+
+      (5) 测试
+          import  {{'{'}} TestScheduler {{'}'}} from 'rxjs/testing';
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span>
+    6. <span class="kjf-bolder-font">坑与最佳实践：</span>
+    </span>
+      <span class="kjf-bolder-font">取消订阅</span>
+        subscribe 之后，你的回调函数就被别人引用了，因此如果不撤销对这个回调函数的引用，那么与它相
+        关的内存就永远不会释放，同时，它仍然会在流中有数据过来时被调用，可能会导致奇
+        怪的 console.log 等意外行为。
+        因此，必须找到某个时机撤销对这个回调函数的引用。但其实不一定需要那么麻烦。
+        解除对回调函数的引用有两种时机，
+          一种是这个流完成（complete，包括正常结束和异常结束）了，
+            当流完成时，会自动解除全部订阅回调，而所有的有限流都是会自动完成的。
+            只有无尽流才需要特别处理，也就是订阅方要主动取消订阅。
+          一种是订阅方主动取消。
+        当调用 Observable 的 subscribe 方法时，会返回一个 Subscription 类型的引用，它实际上是一
+        个订阅凭证。把它保存下来，等恰当的时机调用它的 unsubscribe 方法就可以取消订阅了。
+          比如在 Angular 中，如果你订阅了无尽流，那么就需要把订阅凭证保存在私有变量里，并且
+          在 ngOnDestroy 回调中调用它的 unsubscribe 方法。
+
+      <span class="kjf-bolder-font">类型检查</span>
+        只要有可能，请尽量使用 TypeScript 来书写 RxJS 程序。
+        由于大量 operator 都会改变流中的数据类型，因此如果靠人力来追踪数据类型的变化既繁琐又容易出错。
+        TypeScript 的类型检查可以给你提供很大的帮助，既省心又安全，而且这两个都是微软家的，搭配使用，风味更佳。
+
+      <span class="kjf-bolder-font">代码风格式</span>
+        如同所有 FP 程序一样，ReactiveX 的代码也应该由一系列小的、单一职责的、无副作用的函数组成。
+        虽然 JavaScript 无法像 Java 中那样对 Lambda 表达式的副作用做出编译期限制，但是仍然要遵循同
+        样的原则，坚持无副作用和数据不变性。
+    </pre>
+  </code>
+
+  <code>
+    <pre>
+    <span>
+    7. <span class="kjf-bolder-font">参考：</span>
+    </span>
+      <span class="kjf-bolder-font">弹珠图</span>
+        <a href="https://rxmarbles.com/" target="_blank">https://rxmarbles.com/</a>
+
+      <span class="kjf-bolder-font">ReactiveX文档</span>
+        <a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank">https://mcxiaoke.gitbooks.io/rxdocs/content/</a>
+
+      <span class="kjf-bolder-font">RxJS 6有哪些新变化？</span>
+        <a href="https://segmentfault.com/a/1190000014956260" target="_blank">https://segmentfault.com/a/1190000014956260</a>
+
+      <span class="kjf-bolder-font">30 天精通 rxjs</span>
+        <a href="https://ithelp.ithome.com.tw/articles/10189028" target="_blank">https://ithelp.ithome.com.tw/articles/10189028</a>
+
+      <span class="kjf-bolder-font">rxjs 简书学习资源</span>
+        <a href="https://www.jianshu.com/c/0521ef8586bb" target="_blank">https://www.jianshu.com/c/0521ef8586bb</a>
+
+      <span class="kjf-bolder-font">rxXXX git仓储</span>
+        <a href="https://github.com/ReactiveX?page=1" target="_blank">https://github.com/ReactiveX?page=1</a>
+
+      <span class="kjf-bolder-font">在线练习 rxjs</span>
+        <a href="http://reactivex.io/learnrx/" target="_blank">http://reactivex.io/learnrx/</a>
+
+      <span class="kjf-bolder-font">js 原生写 观察者模式、迭代器模式</span>
+        <a href="https://www.jianshu.com/p/fb9ff8c4dc6d" target="_blank">https://www.jianshu.com/p/fb9ff8c4dc6d</a>
+
+      <span class="kjf-bolder-font">mafeifan 技术博客</span>
+        <a href="https://blog.mafeifan.com/" target="_blank">https://blog.mafeifan.com/</a>
+
+      <span class="kjf-bolder-font">rxjs 响应式编程</span>
+        <a href="https://segmentfault.com/a/1190000015966793" target="_blank">https://segmentfault.com/a/1190000015966793</a>
+    </pre>
+  </code>
+
+  参考：<br />
+    作者：readilen：<br />
+    链接：<a href="https://www.jianshu.com/p/fb9ff8c4dc6d">https://www.jianshu.com/p/fb9ff8c4dc6d</a><br />
+    来源：简书 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br /><br /><br />
+</div>
