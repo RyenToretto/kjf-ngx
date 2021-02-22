@@ -252,4 +252,16 @@ export const routesConfig = [
             tmw: '解耦，代码复用，增强扩展性。'
         }
     },
+    {
+        path: 'simple-test',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/angular/simple-test/simple-test.module').then(m => m.SimpleTestModule),
+        data: {
+            type: 'angular-learn',
+            name: '06. simple-test',
+            cnName: '',
+            description: '学习 angular',
+            tmw: '简单的 angular 测试'
+        }
+    }
 ];
