@@ -4,11 +4,11 @@ import {
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'rxjs6-overview',
-    templateUrl: './rxjs6-overview.component.html',
-    styleUrls: ['./rxjs6-overview.component.scss']
+    selector: 'typescript-overview',
+    templateUrl: './typescript-overview.component.html',
+    styleUrls: ['./typescript-overview.component.scss']
 })
-export class Rxjs6OverviewComponent {
+export class TypescriptOverviewComponent {
     constructor(private router: Router) {}
 
     toChildComponent(path: string) {

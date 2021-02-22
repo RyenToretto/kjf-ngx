@@ -4,7 +4,7 @@ import { Subject, Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class Rxjs6OverviewService {
+export class TypescriptOverviewService {
     subject = new Subject<any>(); // 这里可以创建多个subject
 
     constructor() { }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { Rxjs6OverviewComponent } from './rxjs6-overview.component';
+import { TypescriptOverviewComponent } from './typescript-overview.component';
 
 @NgModule({
     imports: [
@@ -11,16 +11,16 @@ import { Rxjs6OverviewComponent } from './rxjs6-overview.component';
         FormsModule,
         RouterModule.forChild([
             { path: '',  redirectTo: 'index' },
-            { path: 'index', component: Rxjs6OverviewComponent },
+            { path: 'index', component: TypescriptOverviewComponent },
         ])
     ],
-    exports: [ Rxjs6OverviewComponent ],
+    exports: [ TypescriptOverviewComponent ],
     declarations: [
-        Rxjs6OverviewComponent
+        TypescriptOverviewComponent
 
     ],
     entryComponents: [
-        Rxjs6OverviewComponent,
+        TypescriptOverviewComponent,
     ],
 })
 export class TypescriptOverviewModule {
