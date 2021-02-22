@@ -7,6 +7,7 @@
     "start": "ng serve --open --configuration es5",
     "build": "ng build --prod",
     "test": "ng test",
+    "postinstall": "husky install",
     "pretty": "pretty-quick --staged",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --fix",
     "e2e": "ng e2e",
@@ -65,7 +66,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E $1",
+      "commit-msg": "commitlint --edit $1",
       "pre-commit": "pretty-quick --staged"
     }
   }
