@@ -6,12 +6,12 @@ import { AlertModule } from 'kjf-ngx/alert';
 
 
 @NgModule({
-  imports: [ CommonModule ],
-  exports: [
-      AccordionModule,
-      AlertModule
-  ],
-  providers: [],
+    imports: [ CommonModule ],
+    exports: [
+        AccordionModule,
+        AlertModule
+    ],
+    providers: [],
 })
 export class KjfNgxModule {
     static forRoot(): ModuleWithProviders<KjfNgxModule> {

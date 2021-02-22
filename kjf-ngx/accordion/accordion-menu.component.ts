@@ -5,58 +5,58 @@ import { AccordionListComponent } from './accordion-list.component';
 import { AccordionComponent } from './accordion.component';
 
 @Component({
-  selector: 'd-accordion-menu',
-  templateUrl: './accordion-menu.component.html',
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
+    selector: 'd-accordion-menu',
+    templateUrl: './accordion-menu.component.html',
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
 })
 export class AccordionMenuComponent extends AccordionBaseComponent<AccordionBaseMenu<AccordionMenuItem>> {
-  @HostBinding('class.devui-accordion-menu-item')
-  defaultClasses = true;
+    @HostBinding('class.devui-accordion-menu-item')
+    defaultClasses = true;
 
-  public accordionListFromView: AccordionListComponent;
+    public accordionListFromView: AccordionListComponent;
 
-  get menuItemTemplate() {
-    return this.accordion.menuItemTemplate;
-  }
+    get menuItemTemplate() {
+        return this.accordion.menuItemTemplate;
+    }
 
-  @HostBinding('class.open')
-  get open() {
-    return (this.keyOpen === undefined && this.accordion.autoOpenActiveMenu)
-      ? this.childActived
-      : this.keyOpen;
-  }
-  get keyOpen() {
-    return this.item && this.item[this.accordion.openKey];
-  }
+    @HostBinding('class.open')
+    get open() {
+        return (this.keyOpen === undefined && this.accordion.autoOpenActiveMenu)
+            ? this.childActived
+            : this.keyOpen;
+    }
+    get keyOpen() {
+        return this.item && this.item[this.accordion.openKey];
+    }
 
-  get children() {
-    return this.item && this.item[this.accordion.childrenKey];
-  }
-  get childActived() {
-    return this.routerLinkActived || this.hasActiveChildren;
-  }
+    get children() {
+        return this.item && this.item[this.accordion.childrenKey];
+    }
+    get childActived() {
+        return this.routerLinkActived || this.hasActiveChildren;
+    }
 
-  @HostBinding('class.devui-router-active')
-  get routerLinkActived() {
-    return this.accordionListFromView && this.accordionListFromView.routerLinkActived;
-  }
+    @HostBinding('class.devui-router-active')
+    get routerLinkActived() {
+        return this.accordionListFromView && this.accordionListFromView.routerLinkActived;
+    }
 
-  @HostBinding('class.devui-has-active-item')
-  get hasActiveChildren() {
-    return this.accordionListFromView && this.accordionListFromView.hasActiveChildren;
-  }
+    @HostBinding('class.devui-has-active-item')
+    get hasActiveChildren() {
+        return this.accordionListFromView && this.accordionListFromView.hasActiveChildren;
+    }
 
-  constructor(public accordion: AccordionComponent) {
-    super(accordion);
-  }
+    constructor(public accordion: AccordionComponent) {
+        super(accordion);
+    }
 
-  toggle(event) {
-    this.accordion.menuToggleFn({
-      item: this.item,
-      open: !this.open,
-      parent: this.parent,
-      event: event
-    });
-  }
+    toggle(event) {
+        this.accordion.menuToggleFn({
+            item: this.item,
+            open: !this.open,
+            parent: this.parent,
+            event
+        });
+    }
 }

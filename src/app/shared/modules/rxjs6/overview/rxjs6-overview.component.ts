@@ -1,5 +1,5 @@
 import {
-  Component
+    Component
 } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./rxjs6-overview.component.scss']
 })
 export class Rxjs6OverviewComponent {
-  constructor(private router: Router) {}
+    constructor(private router: Router) {}
 
     toChildComponent(path: string) {
         const navigation = this.router.url.split('/');

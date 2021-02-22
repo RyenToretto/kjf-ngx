@@ -1,5 +1,5 @@
 import {
-  Type
+    Type
 } from '@angular/core';
 
 export interface IExampleData {

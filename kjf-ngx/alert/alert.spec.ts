@@ -5,7 +5,7 @@ import { AlertComponent } from './alert.component';
 import { By } from '@angular/platform-browser';
 import { doesNotThrow } from 'assert';
 @Component({
-  template: `
+    template: `
   <d-alert [type]="type" [showIcon]= "showIcon" (closeEvent)="handleClose($event)" [cssClass]="cssClass">
     <span>成功。devcloud一站式云端DevOps平台。</span>
   </d-alert>
@@ -17,12 +17,12 @@ class TestAlertComponent {
   showIcon = true;
   cssClass = '';
   handleClose($event): void {
-    this.clickCount++;
+      this.clickCount++;
   }
 }
 
 @Component({
-  template: `
+    template: `
   <d-alert [type]="'success'" [closeable]="false" [dismissTime]="3000">
     success
   </d-alert>
@@ -32,145 +32,145 @@ class TestAlertDissmissTimeComponent {
 
 }
 describe('alert', () => {
-  describe('alert basic', () => {
-    let testComponent: TestAlertComponent;
-    let alertElement: HTMLElement;
-    let fixture: ComponentFixture<TestAlertComponent>;
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        imports: [AlertModule],
-        declarations: [TestAlertComponent]
-      }).compileComponents();
+    describe('alert basic', () => {
+        let testComponent: TestAlertComponent;
+        let alertElement: HTMLElement;
+        let fixture: ComponentFixture<TestAlertComponent>;
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [AlertModule],
+                declarations: [TestAlertComponent]
+            }).compileComponents();
+        });
+
+        beforeEach(() => {
+            fixture = TestBed.createComponent(TestAlertComponent);
+            testComponent = fixture.componentInstance;
+            alertElement = fixture.debugElement.query(By.directive(AlertComponent)).nativeElement;
+            fixture.detectChanges();
+        });
+        describe('Alert demo has created successfully', () => {
+            it('Alert should create alert testComponent', () => {
+                expect(testComponent).toBeTruthy();
+            });
+
+            it('Alert should create alert container ', () => {
+                expect(alertElement).toBeTruthy();
+            });
+
+            it('Alert should have content', () => {
+                expect(alertElement.querySelector('.kjfui-alert').textContent).toBe('成功。devcloud一站式云端DevOps平台。');
+            });
+        });
+        describe('alert type', () => {
+            it('Alert should has success type', () => {
+                expect(alertElement.querySelector('.kjfui-icon-success')).not.toBe(null);
+            });
+
+            it('Alert should has danger type', () => {
+                testComponent.type = 'danger';
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-icon-error')).not.toBe(null);
+            });
+
+            it('Alert should has warning type', () => {
+                testComponent.type = 'warning';
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-icon-warning')).not.toBe(null);
+            });
+
+            it('Alert should has info type', () => {
+                testComponent.type = 'info';
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-icon-info')).not.toBe(null);
+            });
+        });
+
+        describe('alert cssClass', () => {
+            it('Alert should append cssClass', () => {
+                testComponent.cssClass = 'cssClass';
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-alert').classList).toContain('cssClass');
+            });
+        });
+
+        describe('alert icon', () => {
+            it('Alert should show icon ', () => {
+                expect(alertElement.querySelector('.kjfui-alert-icon')).not.toBe(null);
+            });
+
+            it('Alert should not show icon ', () => {
+                testComponent.showIcon = false;
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-alert-icon')).toBe(null);
+            });
+        });
+
+        describe('alert close', () => {
+            it('Alert should close', () => {
+                const closeButton = alertElement.querySelector('button');
+                closeButton.click();
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-alert')).toBe(null);
+            });
+
+            it('Alert should activate closeEvent', () => {
+                const closeButton = alertElement.querySelector('button');
+                closeButton.click();
+                fixture.detectChanges();
+                expect(testComponent.clickCount).toBe(1);
+            });
+        });
+
     });
 
-    beforeEach(() => {
-      fixture = TestBed.createComponent(TestAlertComponent);
-      testComponent = fixture.componentInstance;
-      alertElement = fixture.debugElement.query(By.directive(AlertComponent)).nativeElement;
-      fixture.detectChanges();
+    describe('alert dissmiss', () => {
+        let testComponent: TestAlertDissmissTimeComponent;
+        let alertElement: HTMLElement;
+        let fixture: ComponentFixture<TestAlertDissmissTimeComponent>;
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [AlertModule],
+                declarations: [TestAlertDissmissTimeComponent]
+            }).compileComponents();
+        });
+
+        beforeEach(() => {
+            fixture = TestBed.createComponent(TestAlertDissmissTimeComponent);
+            testComponent = fixture.componentInstance;
+            alertElement = fixture.debugElement.query(By.directive(AlertComponent)).nativeElement;
+        });
+        describe('Alert demo has created successfully', () => {
+            it('Alert should create alert testComponent', () => {
+                expect(testComponent).toBeTruthy();
+            });
+
+            it('Alert should create alert container ', () => {
+                expect(alertElement).toBeTruthy();
+            });
+
+            it('Alert should have content', () => {
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-alert').textContent).toBe(' success ');
+            });
+        });
+        describe('alert dismiss', () => {
+            it('Alert should not dismiss before 3000ms', fakeAsync(() => {
+                fixture.detectChanges();
+                tick(2500);
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-alert')).not.toBe(null);
+                tick(500);
+                fixture.detectChanges();
+            }));
+
+            it('Alert should dismiss in 3000ms', fakeAsync(() => {
+                fixture.detectChanges();
+                tick(3000);
+                fixture.detectChanges();
+                expect(alertElement.querySelector('.kjfui-alert')).toBe(null);
+            }));
+        });
     });
-    describe('Alert demo has created successfully', () => {
-      it('Alert should create alert testComponent', () => {
-        expect(testComponent).toBeTruthy();
-      });
-
-      it('Alert should create alert container ', () => {
-        expect(alertElement).toBeTruthy();
-      });
-
-      it('Alert should have content', () => {
-        expect(alertElement.querySelector('.kjfui-alert').textContent).toBe('成功。devcloud一站式云端DevOps平台。');
-      });
-    });
-    describe('alert type', () => {
-      it('Alert should has success type', () => {
-        expect(alertElement.querySelector('.kjfui-icon-success')).not.toBe(null);
-      });
-
-      it('Alert should has danger type', () => {
-        testComponent.type = 'danger';
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-icon-error')).not.toBe(null);
-      });
-
-      it('Alert should has warning type', () => {
-        testComponent.type = 'warning';
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-icon-warning')).not.toBe(null);
-      });
-
-      it('Alert should has info type', () => {
-        testComponent.type = 'info';
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-icon-info')).not.toBe(null);
-      });
-    });
-
-    describe('alert cssClass', () => {
-      it('Alert should append cssClass', () => {
-        testComponent.cssClass = 'cssClass';
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-alert').classList).toContain('cssClass');
-      });
-    });
-
-    describe('alert icon', () => {
-      it('Alert should show icon ', () => {
-        expect(alertElement.querySelector('.kjfui-alert-icon')).not.toBe(null);
-      });
-
-      it('Alert should not show icon ', () => {
-        testComponent.showIcon = false;
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-alert-icon')).toBe(null);
-      });
-    });
-
-    describe('alert close', () => {
-      it('Alert should close', () => {
-        const closeButton = alertElement.querySelector('button');
-        closeButton.click();
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-alert')).toBe(null);
-      });
-
-      it('Alert should activate closeEvent', () => {
-        const closeButton = alertElement.querySelector('button');
-        closeButton.click();
-        fixture.detectChanges();
-        expect(testComponent.clickCount).toBe(1);
-      });
-    });
-
-  });
-
-  describe('alert dissmiss', () => {
-    let testComponent: TestAlertDissmissTimeComponent;
-    let alertElement: HTMLElement;
-    let fixture: ComponentFixture<TestAlertDissmissTimeComponent>;
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        imports: [AlertModule],
-        declarations: [TestAlertDissmissTimeComponent]
-      }).compileComponents();
-    });
-
-    beforeEach(() => {
-      fixture = TestBed.createComponent(TestAlertDissmissTimeComponent);
-      testComponent = fixture.componentInstance;
-      alertElement = fixture.debugElement.query(By.directive(AlertComponent)).nativeElement;
-    });
-    describe('Alert demo has created successfully', () => {
-      it('Alert should create alert testComponent', () => {
-        expect(testComponent).toBeTruthy();
-      });
-
-      it('Alert should create alert container ', () => {
-        expect(alertElement).toBeTruthy();
-      });
-
-      it('Alert should have content', () => {
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-alert').textContent).toBe(' success ');
-      });
-    });
-    describe('alert dismiss', () => {
-      it('Alert should not dismiss before 3000ms', fakeAsync(() => {
-        fixture.detectChanges();
-        tick(2500);
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-alert')).not.toBe(null);
-        tick(500);
-        fixture.detectChanges();
-      }));
-
-      it('Alert should dismiss in 3000ms', fakeAsync(() => {
-        fixture.detectChanges();
-        tick(3000);
-        fixture.detectChanges();
-        expect(alertElement.querySelector('.kjfui-alert')).toBe(null);
-      }));
-    });
-  });
 });
 

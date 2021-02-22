@@ -1,5 +1,5 @@
 import {
-  Component
+    Component
 } from '@angular/core';
 
 @Component({
@@ -8,12 +8,12 @@ import {
 })
 export class AlertDemoComponent {
 
-  navItems = [
-    { dAnchorLink: 'basic-usage', value: '基本用法'},
-    { dAnchorLink: 'tips-to-close', value: '可关闭的提示'}
-  ];
+    navItems = [
+        { dAnchorLink: 'basic-usage', value: '基本用法'},
+        { dAnchorLink: 'tips-to-close', value: '可关闭的提示'}
+    ];
 
-  constructor() {
+    constructor() {
 
-  }
+    }
 }

@@ -1,5 +1,5 @@
 import {
-  Component
+    Component
 } from '@angular/core';
 
 @Component({
@@ -8,6 +8,6 @@ import {
     styleUrls: ['./ioc-demo.component.scss']
 })
 export class IocDemoComponent {
-  constructor() {
-  }
+    constructor() {
+    }
 }

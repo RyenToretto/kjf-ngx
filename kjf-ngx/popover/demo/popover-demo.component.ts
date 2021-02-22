@@ -1,5 +1,5 @@
 import {
-  Component
+    Component
 } from '@angular/core';
 
 @Component({
@@ -7,5 +7,5 @@ import {
     templateUrl: './popover-demo.component.html'
 })
 export class PopoverDemoComponent {
-  constructor() { }
+    constructor() { }
 }

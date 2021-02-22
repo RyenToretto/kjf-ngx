@@ -5,18 +5,18 @@ import { AccordionBaseItemComponent } from './accordion-base-item-component.clas
 @Directive()
 // tslint:disable-next-line: directive-class-suffix
 export abstract class AccordionBaseLinkComponent extends AccordionBaseItemComponent<AccordionLinkableItem> {
-  get link() {
-    return this.item && this.item[this.accordion.linkKey];
-  }
+    get link() {
+        return this.item && this.item[this.accordion.linkKey];
+    }
 
-  get target() {
-    return this.item && this.item[this.accordion.linkTargetKey] || this.accordion.linkDefaultTarget;
-  }
+    get target() {
+        return this.item && this.item[this.accordion.linkTargetKey] || this.accordion.linkDefaultTarget;
+    }
 
-  get linkType() {
-    return this.item && this.item[this.accordion.linkTypeKey] || '';
-  }
-  constructor(protected accordion: AccordionOptions) {
-    super(accordion);
-  }
+    get linkType() {
+        return this.item && this.item[this.accordion.linkTypeKey] || '';
+    }
+    constructor(protected accordion: AccordionOptions) {
+        super(accordion);
+    }
 }

@@ -12,9 +12,9 @@ module.exports = [
             },
             {
                 name: 'thyStyle',
-                description: "是否虚线 'solid' | 'dashed'",
+                description: '是否虚线 \'solid\' | \'dashed\'',
                 type: 'string',
-                default: "'solid'"
+                default: '\'solid\''
             },
             {
                 name: 'thyText',
@@ -24,9 +24,9 @@ module.exports = [
             },
             {
                 name: 'thyTextDirection',
-                description: "中间内容位置 'left' | 'right' | 'center'",
+                description: '中间内容位置 \'left\' | \'right\' | \'center\'',
                 type: 'string',
-                default: "'center'"
+                default: '\'center\''
             }
         ]
     }

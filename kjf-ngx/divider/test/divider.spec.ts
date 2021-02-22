@@ -72,7 +72,7 @@ describe('ThyDividerComponent', () => {
         });
     });
 
-    describe("test thyStyle as 'dashed'", () => {
+    describe('test thyStyle as \'dashed\'', () => {
         it('should exist .thy-divider.thy-divider-dashed', () => {
             componentInstance.styleMode = 'dashed';
             fixture.detectChanges();

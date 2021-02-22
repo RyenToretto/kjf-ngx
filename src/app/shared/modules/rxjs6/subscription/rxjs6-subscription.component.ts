@@ -1,5 +1,5 @@
 import {
-  Component
+    Component
 } from '@angular/core';
 
 @Component({
@@ -8,5 +8,5 @@ import {
     styleUrls: ['./rxjs6-subscription.component.scss']
 })
 export class Rxjs6SubscriptionComponent {
-  constructor() {}
+    constructor() {}
 }

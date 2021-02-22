@@ -1,5 +1,5 @@
 import {
-  Component
+    Component
 } from '@angular/core';
 
 @Component({
@@ -8,5 +8,5 @@ import {
     styleUrls: ['./rxjs6-behavior-subject.component.scss']
 })
 export class Rxjs6BehaviorSubjectComponent {
-  constructor() {}
+    constructor() {}
 }

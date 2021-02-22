@@ -68,7 +68,7 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit {
     private flatten(arr: Array<any>, childrenKey = 'children', includeParent = false, includeLeaf = true) {
         return arr.reduce((acc, cur) => {
             const children = cur[childrenKey];
-            if ( children === undefined) {
+            if (children === undefined) {
                 if (includeLeaf) {
                     acc.push(cur);
                 }
@@ -106,20 +106,20 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit {
     public itemClickFn = (itemEvent: AccordionItemClickEvent) => {
         const prevActiveItem = this.activeItem;
         this.activeItemFn(itemEvent.item);
-        this.itemClick.emit({...itemEvent, prevActiveItem: prevActiveItem});
-    }
+        this.itemClick.emit({...itemEvent, prevActiveItem});
+    };
 
     linkItemClickFn = (itemEvent: AccordionItemClickEvent) => {
         const prevActiveItem = this.activeItem;
         this.activeItem = itemEvent.item;
-        this.itemClick.emit({...itemEvent, prevActiveItem: prevActiveItem});
-    }
+        this.itemClick.emit({...itemEvent, prevActiveItem});
+    };
 
     // 打开或关闭可折叠菜单
     public menuToggleFn = (menuEvent: AccordionMenuToggleEvent) => {
         this.openMenuFn(menuEvent.item, menuEvent.open);
         this.menuToggle.emit(menuEvent);
-    }
+    };
 
     // 激活子菜单项并去掉其他子菜单的激活
     activeItemFn(item) {

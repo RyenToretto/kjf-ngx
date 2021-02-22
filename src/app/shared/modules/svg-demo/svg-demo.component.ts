@@ -1,5 +1,5 @@
 import {
-  Component
+    Component
 } from '@angular/core';
 
 @Component({
@@ -8,5 +8,5 @@ import {
     styleUrls: ['./svg-demo.component.scss']
 })
 export class SvgDemoComponent {
-  constructor() {}
+    constructor() {}
 }

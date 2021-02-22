@@ -9,24 +9,24 @@ import { BasicComponent } from './basic/basic.component';
 import { CloseComponent } from './close/close.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    AlertModule,
-    RouterModule.forChild([
-      { path: '',  redirectTo: 'demo' },
-      { path: 'demo', component: AlertDemoComponent}
-    ])
-  ],
-  exports: [AlertDemoComponent],
-  declarations: [
-    AlertDemoComponent,
-    BasicComponent,
-    CloseComponent,
-  ],
-  entryComponents: [
-    AlertDemoComponent,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        AlertModule,
+        RouterModule.forChild([
+            { path: '',  redirectTo: 'demo' },
+            { path: 'demo', component: AlertDemoComponent}
+        ])
+    ],
+    exports: [AlertDemoComponent],
+    declarations: [
+        AlertDemoComponent,
+        BasicComponent,
+        CloseComponent,
+    ],
+    entryComponents: [
+        AlertDemoComponent,
+    ],
 })
 export class AlertDemoModule {
 }
