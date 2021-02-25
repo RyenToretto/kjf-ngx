@@ -247,7 +247,7 @@ export const routesConfig = [
         data: {
             type: 'angular-learn',
             name: '01. IocDemo',
-            cnName: '控制反转测试',
+            cnName: '控制反转',
             description: '学习 angular 的控制反转。',
             tmw: '解耦，代码复用，增强扩展性。'
         }
@@ -274,6 +274,18 @@ export const routesConfig = [
             cnName: '管道',
             description: '学习 pipe',
             tmw: '简单的 pipe 测试'
+        }
+    },
+    {
+        path: 'form',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/angular/form-learn/form-learn.module').then(m => m.FormLearnModule),
+        data: {
+            type: 'angular-learn',
+            name: '04. form',
+            cnName: '表单',
+            description: '学习 form',
+            tmw: '简单的 form 测试'
         }
     }
 ];

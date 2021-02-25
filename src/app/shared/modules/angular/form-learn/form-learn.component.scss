@@ -1,0 +1,5 @@
+@import 'kjf-ngx/style/kjf-ngx-var';
+
+.form-learn {
+  @include test-beautiful();
+}
