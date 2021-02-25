@@ -5,9 +5,11 @@ import { SharedModule } from '../../../shared.module';
 import { SimpleTestComponent } from './simple-test.component';
 
 import { CustomComponent } from './custom/custom.component';
+import { OutputComponent } from './output/output.component';
 
 const components = [
-    CustomComponent
+    CustomComponent,
+    OutputComponent
 ];
 
 @NgModule({

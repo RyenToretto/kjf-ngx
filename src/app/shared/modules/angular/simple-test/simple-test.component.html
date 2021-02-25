@@ -23,21 +23,13 @@
   <code>
     -- 03 --
     <pre>
-      自定义组件
-    </pre>
-    <simple-test-custom></simple-test-custom>
-  </code>
-
-  <code>
-    -- 04 --
-    <pre>
       定义数据接口
     </pre>
     &nbsp;&nbsp;&nbsp;&nbsp;{{ testAuthor.name }}
   </code>
 
   <code>
-    -- 05 --
+    -- 04 --
     <pre>
       ngIf 指令语法
     </pre>
@@ -45,7 +37,7 @@
   </code>
 
   <code>
-    -- 06 --
+    -- 05 --
     <pre>
       ngFor 指令语法
     </pre>
@@ -55,7 +47,7 @@
   </code>
 
   <code>
-    -- 07 --
+    -- 06 --
     <pre>
       <strong>(eventName)</strong> 的语法，实现事件绑定: 点了 --{{ testCount }}-- 下
     </pre>
@@ -63,7 +55,7 @@
   </code>
 
   <code>
-    -- 08 --
+    -- 07 --
     <pre>
       表单模块基础
         Angular 中有两种表单：
@@ -80,7 +72,7 @@
   </code>
 
   <code>
-    -- 09 --
+    -- 08 --
     <pre>
       表单模块 - 双向数据绑定
         (1) 引入 FormsModule
@@ -90,7 +82,7 @@
   </code>
 
   <code>
-    -- 10 --
+    -- 09 --
     <pre>
       使用 HttpClient 模块
         (1) app.module.ts 引入 HttpClientModule
@@ -106,7 +98,7 @@
   </code>
 
   <code>
-    -- 11 --
+    -- 10 --
     <pre>
       服务 service
         (1) 创建并暴露服务
@@ -138,5 +130,21 @@
     <div *ngFor="let testMember of simpleTestService.getMembers() | async">
       {{ testMember.login }}
     </div>
+  </code>
+
+  <code>
+    -- 11 --
+    <pre>
+      自定义组件
+    </pre>
+    <simple-test-custom></simple-test-custom>
+  </code>
+
+  <code>
+    -- 12 --
+    <pre>
+      使用 @Output 装饰器: messageFromChild = <span class="kjf-purple-font">{{ messageFromChild?.text }}</span>
+    </pre>
+    <simple-test-output (childClick)="handleChildClick($event)"></simple-test-output>
   </code>
 </div>

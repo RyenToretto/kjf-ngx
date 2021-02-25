@@ -4,7 +4,11 @@ export interface PersonTestType {
 }
 
 export interface GitMember {
-    id: string;
+    id: string | number;
     login: string;
-    avatar_url: string;
+    avatar_url?: string;
+}
+
+export interface TestOutputEvent {
+    text: string
 }
