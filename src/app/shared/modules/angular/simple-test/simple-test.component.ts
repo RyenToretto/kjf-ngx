@@ -34,6 +34,8 @@ export class SimpleTestComponent {
 
     testLevel = 20;
 
+    testMessage = 20;
+
     testMembers: GitMember[];
 
     constructor(private http: HttpClient,public simpleTestService: SimpleTestService) {} // (4) 使用构造注入，注入 http 服务；

@@ -80,7 +80,17 @@
   </code>
 
   <code>
-    -- 08 --
+    -- 09 --
+    <pre>
+      表单模块 - 双向数据绑定
+        (1) 引入 FormsModule
+        (2) 使用 ngModel 指令：
+    </pre>
+    {{ testMessage }}<input type="text" [(ngModel)]="testMessage" />
+  </code>
+
+  <code>
+    -- 10 --
     <pre>
       使用 HttpClient 模块
         (1) app.module.ts 引入 HttpClientModule
@@ -96,7 +106,7 @@
   </code>
 
   <code>
-    -- 09 --
+    -- 11 --
     <pre>
       服务 service
         (1) 创建并暴露服务
