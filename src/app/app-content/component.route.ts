@@ -258,10 +258,22 @@ export const routesConfig = [
         loadChildren: () => import('../shared/modules/angular/simple-test/simple-test.module').then(m => m.SimpleTestModule),
         data: {
             type: 'angular-learn',
-            name: '06. simple-test',
+            name: '02. simple-test',
             cnName: '',
             description: '学习 angular',
             tmw: '简单的 angular 测试'
+        }
+    },
+    {
+        path: 'pipe',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/angular/pipe-learn/pipe-learn.module').then(m => m.PipeLearnModule),
+        data: {
+            type: 'angular-learn',
+            name: '03. pipe',
+            cnName: '',
+            description: '学习 pipe',
+            tmw: '简单的 pipe 测试'
         }
     }
 ];

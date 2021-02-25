@@ -1,0 +1,5 @@
+@import 'kjf-ngx/style/kjf-ngx-var';
+
+.pipe-learn {
+  @include test-beautiful();
+}
