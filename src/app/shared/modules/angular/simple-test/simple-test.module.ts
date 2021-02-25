@@ -1,21 +1,26 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../../../shared.module';
 import { SimpleTestComponent } from './simple-test.component';
+
+import { CustomComponent } from './custom/custom.component';
+
+const components = [
+    CustomComponent
+];
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
+        SharedModule,
         RouterModule.forChild([
             { path: '',  redirectTo: 'index' },
             { path: 'index', component: SimpleTestComponent },
         ])
     ],
-    exports: [ SimpleTestComponent ],
+    exports: [ SimpleTestComponent, ...components ],
     declarations: [
+        ...components,
         SimpleTestComponent
     ],
     entryComponents: [

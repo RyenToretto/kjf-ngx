@@ -1,14 +1,13 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
+import { SharedModule } from '../../../shared.module';
 
 import { Rxjs6ObserverComponent } from './rxjs6-observer.component';
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
+        SharedModule,
         RouterModule.forChild([
             { path: '',  redirectTo: 'index' },
             { path: 'index', component: Rxjs6ObserverComponent },

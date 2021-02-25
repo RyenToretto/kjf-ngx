@@ -18,3 +18,34 @@
     @content;
   }
 }
+
+@mixin test-beautiful {
+  font-size: 14px;
+  ::ng-deep {
+    hr {
+      margin: 5px 0;
+    }
+    button {
+      margin: 1em;
+      padding: 0.2em 1em;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid #8685c9;
+    }
+    .question-title {
+      font-size: 16px;
+    }
+    .question-answer {
+      font-size: 14px;
+      &.weighted {
+        font-weight: 600;
+      }
+      &.tab-4 {
+        padding-left: 2%;
+      }
+      &.tab-8 {
+        padding-left: 4%;
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../../../shared.module';
 import { IocDemoComponent } from './ioc-demo.component';
 
 import { ClassInjectComponent } from './class-inject/class-inject.component';
@@ -11,8 +10,7 @@ import { InjectDesComponent } from './inject-des/inject-des.component';
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
+        SharedModule,
         RouterModule.forChild([
             { path: '',  redirectTo: 'ioc_demo' },
             { path: 'ioc_demo', component: IocDemoComponent }

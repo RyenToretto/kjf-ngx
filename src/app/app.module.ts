@@ -1,12 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { KjfNgxModule } from 'kjf-ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AppSharedModule } from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -15,10 +14,9 @@ import { AppSharedModule } from './shared/shared.module';
     ],
     imports: [
         BrowserModule,
-        BrowserAnimationsModule,
 
         AppRoutingModule,
-        AppSharedModule,
+        SharedModule,
 
         KjfNgxModule.forRoot(),
     ],

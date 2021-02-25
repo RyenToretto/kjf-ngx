@@ -79,7 +79,7 @@ export class AppContentComponent implements OnInit, OnDestroy {
                         }
                         return 0;
                     });
-                this.componentsData.push({ title: key, children: group, open: true });
+                this.componentsData.push({ title: key, children: group, open: false });
             }
         }
     }

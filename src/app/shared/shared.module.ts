@@ -1,18 +1,28 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'; // (1) 引入 HttpClientModule
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+
+const OFFICIAL_LIST = [
+    CommonModule,
+    HttpClientModule, // (2) 导入 HttpClientModule
+    RouterModule,
+    FormsModule
+];
 
 const SHARED_LIST = [
 ];
 
 @NgModule({
-    declarations: [...SHARED_LIST],
     imports: [
-        FormsModule
+        ...OFFICIAL_LIST
     ],
     exports: [
-        FormsModule,
+        ...OFFICIAL_LIST,
         ...SHARED_LIST
     ],
-    providers: [],
+    declarations: [...SHARED_LIST],
+    providers: []
 })
-export class AppSharedModule {}
+export class SharedModule {}

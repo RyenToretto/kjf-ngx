@@ -1,3 +1,132 @@
 <div class="simple-test clearfix">
-  simple-test.component.html
+  <a href="https://semlinker.com/ng-quick-start/#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E6%8F%92%E5%80%BC%E8%A1%A8%E8%BE%BE%E5%BC%8F"
+   target="_blank">Learn form this</a> <br /><br />
+
+  <code>
+    -- 01 --
+    <pre>
+      <strong>{{ testName }}</strong>实现数据绑定
+
+        可以绑定<strong>{{ testContent.usual }}</strong>,
+        也可以绑定<strong>{{ testContent.obj }}</strong>
+    </pre>
+  </code>
+
+  <code>
+    -- 02 --
+    <pre>
+      使用 angular 内置管道 <strong>json</strong>
+    </pre>
+    &nbsp;&nbsp;&nbsp;&nbsp;{{ testContent | json }}
+  </code>
+
+  <code>
+    -- 03 --
+    <pre>
+      自定义组件
+    </pre>
+    <simple-test-custom></simple-test-custom>
+  </code>
+
+  <code>
+    -- 04 --
+    <pre>
+      定义数据接口
+    </pre>
+    &nbsp;&nbsp;&nbsp;&nbsp;{{ testAuthor.name }}
+  </code>
+
+  <code>
+    -- 05 --
+    <pre>
+      ngIf 指令语法
+    </pre>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span *ngIf="testCondition; else testElse;">条件为 true</span><ng-template #testElse>条件为 false</ng-template>
+  </code>
+
+  <code>
+    -- 06 --
+    <pre>
+      ngFor 指令语法
+    </pre>
+    <div *ngFor="let line of testLines">
+      {{ line }}
+    </div>
+  </code>
+
+  <code>
+    -- 07 --
+    <pre>
+      <strong>(eventName)</strong> 的语法，实现事件绑定: 点了 --{{ testCount }}-- 下
+    </pre>
+    <button (click)="testClick($event)">点点点</button>
+  </code>
+
+  <code>
+    -- 08 --
+    <pre>
+      表单模块基础
+        Angular 中有两种表单：
+          <strong>Template Driven Forms</strong> - 模板驱动式表单 (类似于 AngularJS 1.x 中的表单 )
+          <strong>Reactive Forms</strong> - 响应式表单
+
+        (1) 导入表单模块
+        (2) 简单使用：
+    </pre>
+    <form (submit)="addTestLevel($event, skill.value)">
+      <label>剑荡八荒 {{ testLevel }} 技能点</label>
+      <input type="text" #skill />
+    </form>
+  </code>
+
+  <code>
+    -- 08 --
+    <pre>
+      使用 HttpClient 模块
+        (1) app.module.ts 引入 HttpClientModule
+        (2) app.module.ts 导入 HttpClientModule
+        (3) 从 @angular/common/http 模块中导入 HttpClient；
+        (4) 使用构造注入，注入 http 服务；
+        (5) 调用 http 服务的 get() 方法，设置请求地址并发送 HTTP 请求；
+        (6) 把请求的结果，赋值给对应的属性。
+    </pre>
+    <div *ngFor="let testMember of testMembers">
+      {{ testMember.login }}
+    </div>
+  </code>
+
+  <code>
+    -- 09 --
+    <pre>
+      服务 service
+        (1) 创建并暴露服务
+            import {{ '{' }} Injectable {{ '}' }} from '@angular/core';
+            import {{ '{' }} HttpClient {{ '}' }} from '@angular/common/http';
+
+            import {{ '{' }} Observable {{ '}' }} from 'rxjs';
+
+            import {{ '{' }} GitMember {{ '}' }} from '../entries';
+
+            @Injectable({{ '{' }}
+                  providedIn: 'root'
+            {{ '}' }})
+            export class MemberService {{ '{' }}
+                  constructor(private http: HttpClient) {{ '{' }} {{ '}' }}
+
+                getMembers(): Observable{{ '<' }}GitMember[]{{ '>' }}{{ '{' }}
+                    return this.http
+                        .get{{ '<' }}GitMember[]{{ '>' }}(`https://api.github.com/orgs/angular/members?page=1&per_page=5`);
+                {{ '}' }}
+            {{ '}' }}
+
+        (2) 在应用的地方，导入已创建的服务，如：
+            import {{ '{' }} SimpleTestService {{ '}' }} from './services/simple-test.service';
+
+        (3) 使用构造注入方式，注入服务
+            constructor(public simpleTestService: SimpleTestService) {{ '{' }} {{ '}' }}
+    </pre>
+    <div *ngFor="let testMember of simpleTestService.getMembers() | async">
+      {{ testMember.login }}
+    </div>
+  </code>
 </div>

@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-
-import { SharedModule } from '../../../../shared.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { Rxjs6BehaviorSubjectComponent } from './rxjs6-behavior-subject.component';
 
@@ -11,7 +11,8 @@ import { TwoPubsubChildComponent } from './two-pubsub-child/two-pubsub-child.com
 
 @NgModule({
     imports: [
-        SharedModule,
+        CommonModule,
+        FormsModule,
         RouterModule.forChild([
             { path: '',  redirectTo: 'index' },
             { path: 'index', component: Rxjs6BehaviorSubjectComponent },
