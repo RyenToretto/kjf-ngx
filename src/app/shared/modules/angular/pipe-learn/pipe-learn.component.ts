@@ -1,7 +1,7 @@
 import {
     Component
 } from '@angular/core';
-
+import {of} from 'rxjs';
 
 import { PipeLearnService } from './services/pipe-learn.service';
 
@@ -11,5 +11,11 @@ import { PipeLearnService } from './services/pipe-learn.service';
     styleUrls: ['./pipe-learn.component.scss']
 })
 export class PipeLearnComponent {
+    testToday = new Date();
+
+    object = {2: 'foo', 1: 'bar'};
+
+    objObservable = of({2: 'foo', 1: 'bar'});
+
     constructor(public pipeLearnService: PipeLearnService) {}
 }

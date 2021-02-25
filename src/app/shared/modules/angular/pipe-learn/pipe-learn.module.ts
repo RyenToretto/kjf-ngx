@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
 import { PipeLearnComponent } from './pipe-learn.component';
 
+import { PipeLearnPipes } from './welcome.pipe';
+
 const components = [
 ];
 
@@ -18,7 +20,8 @@ const components = [
     exports: [ PipeLearnComponent, ...components ],
     declarations: [
         ...components,
-        PipeLearnComponent
+        PipeLearnComponent,
+        ...PipeLearnPipes
     ],
     entryComponents: [
         PipeLearnComponent,

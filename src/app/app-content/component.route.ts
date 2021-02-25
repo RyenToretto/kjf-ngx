@@ -271,7 +271,7 @@ export const routesConfig = [
         data: {
             type: 'angular-learn',
             name: '03. pipe',
-            cnName: '',
+            cnName: '管道',
             description: '学习 pipe',
             tmw: '简单的 pipe 测试'
         }
