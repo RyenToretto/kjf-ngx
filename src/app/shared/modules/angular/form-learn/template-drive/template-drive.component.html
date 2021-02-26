@@ -8,28 +8,123 @@
   <code>
     -- 01 --
     <pre>
-      Template Driven Forms - 模板驱动式表单
-        - 使用方便
-        - 适用于简单的场景
-        - 通过 [(ngModel)] 实现数据双向绑定
-        - 自动生成 Form Model (异步)
-        - 最小化组件类的代码
-        - 不易于单元测试
+      简单的<span class="kjf-purple-font">表单验证</span>
+        Angular 支持的内建 validators 如下：
+          required  - 设置表单控件值是非空的
+          email     - 设置表单控件值的格式是 email
+          min       - 设置表单控件值的最小值
+          max       - 设置表单控件值的最大值
+          minlength - 设置表单控件值的最小长度
+          maxlength - 设置表单控件值的最大长度
+          pattern   - 设置表单控件的值需匹配 pattern 对应的模式
     </pre>
   </code>
 
   <code>
     -- 02 --
     <pre>
-      Reactive Forms - 响应式表单
-        - 比较灵活
-        - 适用于复杂的场景
-        - 简化了HTML模板的代码，把验证逻辑抽离到组件类中
-        - 手动创建 Form Model (同步)
-        - 方便的跟踪表单控件值的变化
-        - 易于动态添加表单控件
-        - 易于单元测试
+      必填校验 <span class="kjf-purple-font">required</span>
+        import {{'{'}} Component } from '@angular/core';
+        @Component({{'{'}}
+          selector: 'app-root',
+          template: `
+            {{'<'}}input
+              type="text"
+              required
+              [(ngModel)]={{'"'}}username{{'"'}}{{'/>'}}
+            {{'{'}}{{'{'}}username{{'}'}}{{'}'}}
+          `,
+        {{'}'}})
+        export class AppComponent {{'{'}}
+          username = 'semlinker';
+        {{'}'}}
     </pre>
+  </code>
+
+  <code>
+    -- 03 --
+    <pre>
+      - 判断表单控件是否通过验证
+          可以通过 #userName="ngModel" 方式获取 ngModel 对象
+          然后通过 userName.valid 判断表单控件是否通过验证
+            表单控制的状态：
+              userName.valid     - 表单控件有效
+              userName.invalid   - 表单控件无效
+              userName.pristine  - 表单控件值未改变
+              userName.dirty     - 表单控件值已改变
+              userName.touched   - 表单控件已被访问过
+              userName.untouched - 表单控件未被访问过
+
+      - 显示验证失败的错误信息
+          可以通过 #userName="ngModel" 方式获取 ngModel 对象
+          然后通过该对象的 errors 属性，来获取对应验证规则 (如 required, minlength 等) 的验证状态
+    </pre>
+    用户名： <input
+      type="text"
+      required
+      [(ngModel)]="testName"
+      #testNameModel="ngModel">
+    {{ testNameModel.valid }}
+    <span *ngIf="testNameModel.errors?.required">请您输入用户名</span>
+    <span *ngIf="testNameModel.errors?.minlength">
+      用户名的长度必须大于 {{testNameModel.errors?.minlength.requiredLength}}，当前的长度为
+      {{testNameModel.errors?.minlength.actualLength}}
+    </span>
+  </code>
+
+  <code>
+    -- 04 --
+    <pre>
+      - 使用熟悉的 <span class="kjf-purple-font">form</span> 标签来<span class="kjf-orange-font">创建表单</span>
+          可以通过 #testPhoneForm="ngForm" 方式获取 ngForm 对象
+          然后通过 (ngSubmit)="handleTestPhoneForm(testPhoneForm)"
+          再处理 testPhoneForm.value 来<span class="kjf-orange-font">获取表单的值</span>
+
+      - <span class="kjf-purple-font">ngModelGroup</span> 指令是 Angular 表单中提供的另一特殊指令
+          可以对表单输入内容进行分组，方便我们在语义上区分不同性质的输入
+
+      - 为表单添加<span class="kjf-orange-font">验证状态样式信息</span>，在 Angular 表单中
+          若验证通过则会在表单控件上添加 ng-valid 类
+          若验证失败则会在表单控件上添加 ng-invalid 类
+
+      {{'<'}}form{{'>'}}
+        {{'<'}}label{{'>'}}手机号： {{'<'}}input
+            type="text"
+            required
+            minlength="3"
+            name="testPhone"
+            [(ngModel)]="testPhone"
+            #testPhoneModel="ngModel"{{' />'}}{{'{'}}{{'{'}} testPhoneModel.valid {{'}'}}{{'}'}}
+        {{'<'}}/label{{'>'}}
+        {{'<'}}span *ngIf="testPhoneModel.errors?.required"{{'>'}}请您输入用户名{{'<'}}/span{{'>'}}
+        {{'<'}}span *ngIf="testPhoneModel.errors?.minlength"{{'>'}}
+          用户名的长度必须大于 {{'{'}}{{'{'}}testPhoneModel.errors?.minlength.requiredLength{{'}'}}{{'}'}}，
+          当前的长度为{{'{'}}{{'{'}}testPhoneModel.errors?.minlength.actualLength{{'}'}}{{'}'}}
+        {{'<'}}/span{{'>'}}
+        {{'<'}}button type="submit"{{'>'}}提交{{'<'}}/button{{'>'}}
+      {{'<'}}/form{{'>'}}
+    </pre>
+    <form #testPhoneForm="ngForm" (ngSubmit)="handleTestPhoneForm(testPhoneForm)">
+      <fieldset ngModelGroup="testUserInfo">
+        <label>
+          手机号： <input
+          type="text"
+          required
+          minlength="3"
+          name="testPhone"
+          [(ngModel)]="testPhone"
+          #testPhoneModel="ngModel" />{{ testPhoneModel.valid }}
+        </label>
+        <span *ngIf="testPhoneModel.errors?.required">请您输入手机号</span>
+        <span *ngIf="testPhoneModel.errors?.minlength">
+          用户名的长度必须大于 {{testPhoneModel.errors?.minlength.requiredLength}}，
+          当前的长度为{{testPhoneModel.errors?.minlength.actualLength}}
+        </span>
+        <br />
+        密码： <input type="password" ngModel name="password" />
+      </fieldset>
+      <button type="submit">提交</button>{{ testPhoneForm.value | json }}
+    </form>
   </code>
 
 </div>

@@ -52,18 +52,22 @@ export class AppContentComponent implements OnInit, OnDestroy {
                                 title: newArr[newArr.length - 1].title,
                                 children: [{
                                     title: '综述',
-                                    link: newArr[newArr.length - 1].link
-                                }]
+                                    link: newArr[newArr.length - 1].link,
+                                    open: true
+                                }],
+                                open: true
                             };
                         }
                         newArr[newArr.length - 1].children = [...newArr[newArr.length - 1].children, {
                             title: item.data.name + ' ' + item.data.cnName,
                             link: item.path,
+                            open: true
                         }];
                     } else {
                         newArr.push({
                             title: item.data.name + ' ' + item.data.cnName,
                             link: item.path,
+                            open: true
                         });
                     }
                     return newArr;
@@ -79,7 +83,7 @@ export class AppContentComponent implements OnInit, OnDestroy {
                         }
                         return 0;
                     });
-                this.componentsData.push({ title: key, children: group, open: false });
+                this.componentsData.push({ title: key, children: group, open: true });
             }
         }
     }
