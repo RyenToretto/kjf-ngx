@@ -287,5 +287,17 @@ export const routesConfig = [
             description: '学习 form',
             tmw: '简单的 form 测试'
         }
+    },
+    {
+        path: 'template-drive-form',
+        component: ExamplePanelComponent,
+        loadChildren: () => import('../shared/modules/angular/form-learn/template-drive/template-drive.module').then(m => m.TemplateDriveModule),
+        data: {
+            type: 'angular-learn',
+            name: '04.1 模板驱动式表单',
+            cnName: '',
+            description: '学习 template-drive-form',
+            tmw: '模板驱动式表单'
+        }
     }
 ];
